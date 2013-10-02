@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?php echo $this->_var['config']['site_name']; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->_var['config']['site_keywords']); ?>" />
+<meta name="description" content="<?php echo htmlspecialchars($this->_var['config']['site_description']); ?>" />
+<LINK href="/templates/kele/image/reset1.css" type=text/css rel=stylesheet>
+<LINK href="/templates/kele/image/user.css" type=text/css rel=stylesheet>
+<LINK href="/templates/kele/image/tandiv.css" type=text/css rel=stylesheet>
+<!--[if lte IE 6]>
+<script src="/templates/kele/img/fixPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.pngfix');
+</script>
+<![endif]--> 
+<script>
+<!--
+function setTab(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript">
+function show(tag){ 
+ var light=document.getElementById(tag); 
+ var fade=document.getElementById('fade'); 
+ light.style.display='block'; 
+ fade.style.display='block'; 
+ } 
+function hide(tag){ 
+ var light=document.getElementById(tag); 
+ var fade=document.getElementById('fade'); 
+ light.style.display='none'; 
+ fade.style.display='none'; 
+} 
+</script> 
+</head>
+<body>
+<div class="contenter">
+    
+ <div class="top_navy">
+  <div class="navy_center">
+   <ul>
+    <li><a href="index.php">返回首页</a></li>
+    <li><a href="game.php">网页游戏</a></li>
+    <li><a href="#">社区游戏</a></li>
+    <li><a href="#">官网活动</a></li>
+    <li><a href="#">帮助</a></li>
+   </ul>
+  </div>
+ </div>
+ 
+ 
+ <div class="user_main">
+ 	<div class="user_top">
+    	<h1 class="logo"><img src="templates/kele/image/ooxxsm.png" /></h1>
+    </div>
+</div>
+
+<div class="user_header">
+	<div class="user_left">
+
+<DIV id=uc_box>
+            <div id="Tab1">
+  <form id="login_form" name="login_form" method="post" action="user.php?action=login_ok">
+  <DIV class=login_b>
+  <DIV class="i clearfix">
+    <font color="#000000">用户名:</font>
+     <input id="member_username" name="member_username" type="text"/>
+  </DIV>
+  <DIV class="i clearfix">
+    <font color="#000000">密&nbsp;&nbsp;&nbsp;&nbsp;码:</font>
+      <input id="member_password" name="member_password" type="password" />
+  </DIV>
+  <DIV class=b>
+	<input id="login_submit" type="submit" value="" class="hid cur" />
+	<input name="post_mode" type="hidden" value="withtml5">
+        <P>
+      <input id="keeplive" type="checkbox" value="" checked="checked">
+      <LABEL for=keeplive><font color="#000000">记住登录帐号</font></LABEL>
+      <A title=找回密码 href="user.php?action=forget">找回密码</A>
+  </DIV>
+  <DIV class=b2><A class=hid href="reg.php"></A></DIV>
+  </DIV>
+  </form>
+</div>
+<script type="text/javascript">
+	var logins=function(){
+		var member_username=$('#member_username').val();
+		var member_password=$('#member_password').val();
+		if ($.trim(member_username)==''){
+			alert('<?php echo $this->_var['language']['username_is_empty']; ?>');
+			return false;
+		}
+		if ($.trim(member_password)==''){
+			alert('<?php echo $this->_var['language']['password_is_empty']; ?>');
+			return false;
+		}
+		if (member_password.length<6&&member_password.length>20){
+			alert('<?php echo $this->_var['language']['member_password_text']; ?>');
+			return false;
+		}
+		return true;
+	};
+	$("#login_form").submit(function(){
+		return logins();
+	});
+</script>
+<div id="Tab2" style="display:none;">
+<div class="login_a">
+<div class="hr30"></div>
+    <div class="info">
+        <dl>
+ <div class="avata"></div>
+  <dd id="login_name" class="u_name"><font color="#99FF00"><?php 
+$k = array (
+  'name' => 'get_login_name',
+);
+echo $this->_hash . $k['name'] . '|' . serialize($k) . $this->_hash;
+?></font><font color="white"> 欢迎回来!</font>
+  <p style="color:#FFFFFF;">您拥有平台币: <?php echo $this->_var['user_vc']; ?></p></dd>
+ 
+</dl>
+    <div class="b2">
+<div class="dlfont">
+	<ul>
+
+        <li><a title="个人设置" href="user.php">个人设置</a></li>
+        <li><a title="游戏中心" href="game.php">游戏中心</a></li>
+         <li><a title="立即充值" href="pay0.php">立即充值</a></li>
+         <li><a title="礼包领取" href="card.php">礼包领取</a></li>
+         <li><a title="安全退出" href="user.php?action=logout">安全退出</a></li></ul>
+         	
+         	<div style="display:none;">
+         <iframe src="http://192.168.1.13:82/api/pay/ns_l.php?user=<?php echo $this->_var['username']; ?>&site=<?php echo $this->_var['site']; ?>"></iframe>
+         </div>
+ </div>
+    </div>        
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+var login_state=<?php 
+$k = array (
+  'name' => 'get_login_state',
+);
+echo $this->_hash . $k['name'] . '|' . serialize($k) . $this->_hash;
+?>;
+var curMoney=<?php 
+$k = array (
+  'name' => 'get_cur_money',
+);
+echo $this->_hash . $k['name'] . '|' . serialize($k) . $this->_hash;
+?>;
+$("#curMoney").html("您拥有平台币："+curMoney);
+if(login_state==1){
+	$("#Tab1").hide();
+	$("#Tab2").show();
+}
+</script>
+            
+            </DIV>
+    </div>   
+    
+<div id="lib_Tab1">
+<div class="lib_Menubox">
+<ul>
+   <li id="one1" onclick="setTab('one',1,4)" class="hover">我的首页</li>
+   <li id="one2" onclick="setTab('one',2,4)" >社区游戏</li>
+   <li id="one3" onclick="setTab('one',3,4)">玩家社区</li>   
+   <li id="one4" onclick="setTab('one',4,4)">游戏历程</li>
+</ul>
+</div>
+ <div class="lib_Contentbox">  
+   
+   <div id="con_one_1" >
+   		
+    	<div class="mymainpage_margin">
+        	<div class="msg">为了您的账户安全，请完善您的安全设置。</div>
+            <div class="mmdiv">
+            	<div class="mm_chongzhi">
+            	<ul><li>账户充值:</li>
+                <li><b><a href="pay0.php">游戏充值</a> </b></li>
+                <li><b><a href="user.php?action=paylog">充值记录</a>
+                </li></ul></div>
+            <div class="mm_anquan">
+            	<ul><li>安全中心:</li>
+                <li><b><a href="user.php?action=setpass">修改密码</a></b></li>
+                <li><b><a href="user.php?action=setsec">设置密保</a></b> </li>
+                <li><b><a href="user.php?action=setcer">防沉迷设置</a></b></li>
+                </ul></div>
+      		<div class="mm_wanshan">
+            	<ul><li>资料完善:</li>
+                <li><b><a href="user.php?action=sp">我的推广</a></b></li>
+                <li><b><a href="user.php?action=setuser">资料完善</a></b> </li>
+                <li><b><a href="user.php?action=card">已领新手卡</a></b></li>
+                </ul></div>
+          </div></div>
+          <div class="zuijin">最近玩过的游戏</div>	  
+
+            <div class="playedbox">
+				<ul class="iplay clearfix">
+					<?php $_from = $this->_var['gamelog']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'log');if (count($_from)):
+    foreach ($_from AS $this->_var['log']):
+?>
+					<li>
+						<a href="game.php?action=server_list&game_id=<?php echo $this->_var['log']['game_id']; ?>"><img src="<?php echo $this->_var['log']['server_logo']; ?>"></a>
+						<p class="p1"><?php echo $this->_var['log']['server_name']; ?></p>
+						<p class="p2"><a href="game.php?action=play&game_id=<?php echo $this->_var['log']['game_id']; ?>&server_id=<?php echo $this->_var['log']['server_id']; ?>"target="_blank">进入游戏</a>
+						<a href="pay0.php?app=<?php echo $this->_var['log']['game_no']; ?>&gid=<?php echo $this->_var['log']['game_id']; ?>&game_name=<?php echo $this->_var['log']['game_name']; ?>"target="_blank">充值</a></p>
+					</li>
+					<?php endforeach; else: ?>
+					<li class="noyet">您当前还未玩过游戏，您可以在<a href="game.php">游戏中心</a>挑选自己喜欢的游戏！</li>
+					<?php endif; unset($_from); ?><?php $this->pop_vars();; ?>
+				</ul>
+			</div>
+   </div>
+   
+   <div id="con_one_2" style="display:none">
+<div class="con3_shigong">施工中敬请期待！</div>
+   </div>
+   <div id="con_one_3" style="display:none"><div class="con3_shigong">施工中敬请期待！</div></div>
+   <div id="con_one_4" style="display:none"><div class="con3_shigong">施工中敬请期待！</div></div> 
+ </div>
+</div>
+     
+   
+</div>
+    </body>

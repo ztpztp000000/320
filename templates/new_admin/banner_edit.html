@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><!--{$language.title}--></title>
+<LINK href="/templates/new_admin/img/main.css" type=text/css rel=stylesheet>
+<script type="text/javascript" src="/templates/new_admin/img/js/jquery.js"></script>
+<script type="text/javascript" src="/templates/new_admin/img/js/quxian.js"></script>
+<script type="text/javascript" SRC="js/swfobject.js"></script>
+</head>
+<body>
+	<div id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><h1>平台管理</h1></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<!--{$smarty.session.admin_name}--></b>,<!--{$language.welcome}-->
+				<span>|</span> <a href='?sort=start'><!--{$language.menu_main}--></a>
+                <span>|</span> <a href='?sort=start&do=log_list'><!--{$language.menu_log}--></a>
+				<span>|</span> <a href='?sort=start&do=clear_cache'><!--{$language.menu_clear}--></a>
+				<span>|</span> <a href='?do=logout'><!--{$language.menu_logout}--></a>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+                <li><a HREF="?sort=start">首页</a></li>
+					<li class="current"><a HREF="?sort=game_flat">管理平台</a></li>
+					<li><a HREF="?sort=websites">管理官网</a></li>
+					<li><a HREF="?sort=user">用户列表</a></li>	
+					<li><a HREF="?sort=pay">充值记录</a></li>
+                    <li><a HREF="?sort=graphs">图表</a></li>	
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<!-- End of Aside links -->
+		</div>
+	</div>
+	<!-- End of Header -->
+</div>
+<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>平台管理 -banner管理 - 编辑</h1>
+		</div>
+	</div>
+	<!-- End of Page title ------------------------------------------------------------------------------------------华丽丽的分割线-->
+ <table width="1000" cellpadding="0" cellspacing="0" align="center">
+<tr>
+<td valign="top">
+<div class='title'>
+<a href="?action=other&do=ad_list"><!--{$language.ad_list}--></a>
+&raquo;&nbsp;<!--{if $mode=='insert'}--><!--{$language.ad_add}--><!--{else}--><!--{$language.ad_edit}--><!--{/if}-->
+
+</div>
+
+<div class='item'>
+	<!--{foreach from=$banner_list item=banner}-->
+	<form action="?sort=banner&action=update&id=<!--{$banner.id}-->" method="post" enctype="multipart/form-data">
+		<table width="100%" cellspacing="5" cellpadding="0">
+			<tr>
+			  <td height="30"  align="right">第一幅链接</td>
+			  <td><input type="text" name="website_<!--{$banner.id}-->" size="30" value="<!--{$banner.website|escape:html}-->" class="input"/>【图片的链接地址，请填写绝对地址】</td>
+			</tr>
+			<tr>
+				<td width="20%" height="30"  align="right">第一幅banner</td>
+				<td><input type="file" name="pic_<!--{$banner.id}-->" class="input"/>
+	  				<!--{if $banner.pic}-->
+	  				<a href="<!--{$banner.pic}-->" target="_blank"><img src="<!--{$banner.pic}-->" alt="" align="absmiddle" style="width:100px;height:60px;border:1px solid #ccc;padding:1px"/></a>
+	  			<!--{/if}-->【尺寸规格：1440 * 300px】</td>
+			</tr>
+			<tr>
+				<td width="20%" height="30"  align="right">第一幅小图</td>
+				<td><input type="file" name="pic_mini_<!--{$banner.id}-->" class="input"/> 
+	  				<!--{if $banner.pic_mini}-->
+	  				<a href="<!--{$banner.pic_mini}-->" target="_blank"><img src="<!--{$banner.pic_mini}-->" alt="" align="absmiddle" style="width:100px;height:60px;border:1px solid #ccc;padding:1px"/></a>
+	  			<!--{/if}-->【尺寸规格：104 * 57px】</td>
+				<td><input type="submit" value="<!--{$language.submit}-->" class="button" style="width:200px;"/></td>
+			</tr>
+
+			
+			--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+		</table>
+	</form>
+	<!--{/foreach}-->
+</div>
+</body>
+</html>

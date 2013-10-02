@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title><!--{$language.title}--></title>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+</head>
+<body>
+<!--{include file="top.htm"}-->
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td width="150" valign="top"><!--{include file="left.htm"}--></td>
+<td valign="top">
+<div class='title'>
+<a href="?action=sp&do=sp_cash_force&sp_member_id=<!--{$sp_memeber_id}-->" onclick="return confirm('<!--{$language.confirm_cash_froce}-->')">强制结算</a>
+&raquo;&nbsp;推广员列表</div>
+	<table cellspacing="1" cellpadding="0" width="100%">
+	<tr class="titlebg">
+	<td width="80" align="center">用户名</td>
+	<td width="80" align="center">注册时间</td>
+	<td width="80" align="center">付费金额</td>
+	</tr>
+	<tr><td height="1" bgcolor="#eeeeee" colspan="4"></td></tr>
+	<!--{foreach from=$user_list item=user_info}-->
+	<tr>
+	<td width="80" align="center"><!--{$user_info.name}--></td>
+	<td width="80" align="center"><!--{$user_info.join_time}--></td>
+	<td width="80" align="center"><!--{$user_info.total_money}--></td>
+	</tr>
+	<tr><td height="1" bgcolor="#eeeeee" colspan="4"></td></tr>
+	<!--{foreachelse}-->
+	<tr><td height="50" colspan="4" align="center"><!--{$language.nodata}--></td></tr>
+	<!--{/foreach}-->
+	<tr><td height="50" colspan="4" align="right"><!--{$pagebar}--></td></tr>
+	
+	<tr>
+	<td width="80" align="center">注册用户: <!--{$reg_count}--></td>
+	<td width="80" align="center">付费人数: <!--{$pay_user_count}--></td>
+	<td width="80" align="center">付费金额: <!--{$total_money}--></td>
+	<td width="80" align="center">可提现金额: <!--{$cashed_money}--></td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

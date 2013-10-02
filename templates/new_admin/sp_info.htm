@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title><!--{$language.title}--></title>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+</head>
+<body>
+<!--{include file="top.htm"}-->
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td width="150" valign="top"><!--{include file="left.htm"}--></td>
+<td valign="top">
+<div class='title'>
+<a href="?action=config&do=sp_list"><!--{$language.sp_list}--></a>
+&raquo;&nbsp;<!--{if $mode=='insert'}--><!--{$language.sp_add}--><!--{else}--><!--{$language.sp_edit}--><!--{/if}-->
+
+</div>
+<div class='item'>
+	<table width="100%">
+	<form action="?action=config&do=sp_<!--{$mode}-->" method="post" name="sp_info">
+		<tr>
+		<td align="right" width="110" height="30"><!--{$language.form_sp_name}--></td>
+		<td><!--{if $mode=='insert'}--><input type="text" name="sp_name" size="40" value="<!--{$sp_info.name|escape:html}-->" class="input"/>
+		<!--{else}-->
+		<input type="hidden" name="sp_name" value="<!--{$sp_info.name|escape:html}-->" />
+		<!--{$sp_info.name|escape:html}-->
+		<!--{/if}--></td>
+		</tr>
+		
+		<!--{if $smarty.session.sp_name!=$sp_info.name}-->
+
+		<!--{else}-->
+		<input type="hidden" name="sp_state" value="<!--{$sp_info.state}-->" />
+		<!--{/if}-->
+		<tr>
+		<td align="right" height="30">&nbsp;</td>
+		<td>
+		<input type="submit" value="<!--{$language.submit}-->" class="button"/>
+		</td>
+		</tr>
+		<input type="hidden" name="sp_id" value="<!--{$sp_info.id}-->"/>
+	</form>
+	</table>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
+<script type="text/javascript">
+check_permissions('<!--{$sp_info.permissions}-->');
+
+function check_permissions(permissions){
+	var l=permissions.split(",");
+	var f=document.forms['admin_info'];
+		for (var i=0;i<f.elements.length ;i++ ){
+			if (f.elements[i].type=='checkbox'){
+				for (var j=0;j<l.length ;j++ ){
+					if (f.elements[i].value==l[j]){
+						f.elements[i].checked=true;
+					}
+				}
+			}
+		}
+}
+</script>

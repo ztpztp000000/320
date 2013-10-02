@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title><!--{$language.title}--></title>
+<LINK href="/templates/admin/image/admin.css" type=text/css rel=stylesheet>
+<LINK href="/templates/admin/image/reset.css" type=text/css rel=stylesheet>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript">
+function batch_do_gift(form,mode){
+    var f=document.forms[form];
+    var s=false;
+    for (var i=0;i<f.elements.length;i++){
+        if (f.elements[i].type=='checkbox'){
+            if (f.elements[i].checked){
+                s=true;
+            }
+        }
+    }
+    if (s==false){
+        return false;
+    }
+    if (mode=="delete"){
+        if(confirm("你确定要删除？请注意：如果删除将不可恢复！")){
+            f.submit();
+        }
+    }
+}
+</script>
+<style>
+.tr_line td{border-bottom:1px solid #eeeeee;}
+</style>
+</head>
+<body>
+<!--{include file="top.htm"}-->
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td width="250" valign="top"><!--{include file="left.htm"}--></td>
+<td valign="top">
+<div class='title'>
+<a href="?action=gift&do=gift_add">添加礼包卡</a>
+<a href="?action=gift&do=gift_list">所有</a>
+<a href="?action=gift&do=gift_list&state=1">已使用</a>
+<a href="?action=gift&do=gift_list&state=0">未使用</a>
+&raquo;&nbsp;礼包卡列表</div>
+<form name="gift_list" method="post" action="?action=gift&do=gift_del">
+	<table cellspacing="1" cellpadding="0" width="100%" class="tr_line">
+	<tr class="titlebg">
+    <td width="10"><input type="checkbox" onclick="batch('gift_list',this)"></td>
+	<td height="20" width="40" align="center">ID</td>
+	<td width="150" align="center">礼包卡序号</td>
+    <td width="50" align="center">金额</td>
+	<td width="150" align="center">使用时间</td>
+    <td width="150" align="center">游戏</td>
+    <td width="150" align="center">服区</td>
+	<td align="center">使用人</td>
+    <td width="150" align="center">添加时间</td>
+	</tr>
+	<!--{foreach from=$gift_list item=gift}-->
+	<tr>
+    <td><!--{if $gift.key_state neq 1}--><input type="checkbox" value="<!--{$gift.gift_id}-->" name="gift_ids[]" id="gift_ids[]"><!--{/if}--></td>
+	<td align="right" style="border-bottom:1px solid #eeeeee;"><!--{$gift.gift_id}--></td>
+	<td align="center"><!--{$gift.gift_key}--></td>
+	<td align="right"><!--{$gift.money}--></td>
+	<td align="center"><!--{$gift.key_get_time}--></td>
+	<td align="center"><!--{$gift.key_get_game_id}--></td>
+	<td align="center"><!--{$gift.key_get_server_id}--></td>
+    <td align="center"><!--{$gift.key_get_user}--></td>
+    <td align="center"><!--{$gift.key_add_time}--></td>
+	</tr>
+	<!--{foreachelse}-->
+	<tr><td height="50" colspan="9" align="center"><!--{$language.nodata}--></td></tr>
+	<!--{/foreach}-->
+    <tr class="titlebg">
+    <td width="10"><input type="checkbox" onclick="batch('gift_list',this)"></td>
+	<td colspan="8" align="left">
+    &nbsp;&nbsp;<input type="button" value="批量删除" onclick="batch_do_gift('gift_list','delete')">
+    &nbsp;&nbsp;<a href="?action=gift&do=gift_list_excel&state=<!--{$state}-->">下载Excel</a>
+    </td>
+	</tr>
+    </table>
+    <table width="100%" cellpadding="0" cellspacing="0">
+	<tr><td height="50" align="center"><!--{$pagebar}--></td></tr>
+	</table>
+</form>
+</td>
+</tr>
+</table>
+</body>
+</html>

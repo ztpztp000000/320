@@ -1,0 +1,184 @@
+@charset "utf-8";
+/* CSS Document */
+A:link {
+	COLOR: #747474; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #747474; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: none
+}
+A:active {
+	TEXT-DECORATION: none
+}
+.contenter{background:url("mainbg.png") 50% 29px transparent;width:100%;height:500px;;}
+.top_navy{width:100%;background:#000;height:30px;}
+.top_navy .navy_center{width:1000px;margin:0px auto;overflow:hidden;line-height:30px;}
+.top_navy .navy_center .ul{list-style: none;  
+        margin: 0 0 0px 0;
+        padding: 0;
+        font-size: 1.1em;
+        border-right: 0px solid #ccc;}
+.top_navy .navy_center  li{ margin-bottom: 0px;
+        padding: 0 0px 0 0px;
+        display:inline;}
+.top_navy .navy_center li a{margin:0 10px;color:#ff0;}
+/*main*/
+.user_main{margin:0px auto;overflow:hidden;zoom:1;width:1000px;}
+.user_top{height:80px;zoom:1;}
+.user_top .logo{}
+.user_top .logo a{float:left;width:166px;height:54px;margin:14px 0 016px;overflow:hidden;zoom:1;}
+
+/*custom guide start*/
+.user_header{width:1033px;zoom:1;overflow:hidden;margin:0 auto;}
+
+.user_left{width:228px;height:650px;border:1px solid #4F4E50;position:relative;float:left;background:#333;}
+.user_avatarwrap .content_wrap .u_face{}
+.user_avatarwrap .content_wrap .u_level_info{height:38px;padding:0 1px;background-color:#3f3f3f;}
+.user_avatarwrap .content_wrap .u_level_info .levelBg{background:url("uinfoBg.png");width:188px;height:38px;overflow:hidden;}
+.user_avatarwrap .content_wrap .u_level_info .name_info{floate:left;padding:10px;height:14px;line-height:14px;}
+.level_info{float:right;padding:13px 0;margin:right;}
+.u_rank_info{height:20px;padding:12px 15px;overflow:hidden;background:url("rankInfoBg.png");}
+.u_massage{height:127px;background:url("userManageBg.png") 0 0 repeat-x scroll #363636;padding:0 13px;}
+
+.u_massage li{padding:10px 0 0 26px;overflow:hidden;background:url("umanageIcons24.png") no-repeat 0 0;}
+.u_massage li a{float:left;color:767676;}
+.u_massage li a .go_charge{float:right;color:#ff6501;}
+.u_massage li.charge_icon{background-position:0 10px;}
+u_massage li .forum_icon{background-position:0 -24px;}
+u_massage li .game_mange_icon{background-position:0 -90px;}
+u_massage li .game_vbean_icon{background-position:0 -128px;}
+.resetavatar{width:180px;height:360px;margin:5px 5px 6px;position:relative;zoom:1;}
+
+/*选项卡*/
+
+
+
+/*Tab1*/
+#lib_Tab1{width:792px;height:100%;border:1px solid #333;background:#202020;margin:0px;padding:0px;margin-bottom:15px;float:right;}
+/*菜单class*/
+.lib_Menubox {height:64px;line-height:64px;position:relative;}
+/*/*/
+.lib_Menubox ul{margin:0px;padding:0px;list-style:none; position:absolute;height:64px;text-align:center;}
+.lib_Menubox li{float:left;width:198px;height:64px;line-height:64px;text-align:center;overflow:hidden;font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FFF;background:url("navmenubtt.png") no-repeat 0 0; display:inline;cursor:hand;}
+.lib_Menubox li.hover{background-position:center -64px;}
+.lib_Contentbox{clear:both;margin-top:0px; border-top:none;height:580px;padding-top:8px;}
+-->
+
+.mymainpage_margin{margin:10px;}
+.mymainpage_margin div a:hover{color:#fc0;}
+.mymainpage_margin .msg{margin:10px;padding:3px;color:#FC0;text-align:center;overflow:hidden;font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;}
+.mmdiv{margin-top:30px;}
+.mm_chongzhi{width:400px;height:30px;border-bottom:1px dotted #666;margin-left:20px;margin-top:5px;}
+.mm_chongzhi ul{list-style:none;padding:0px;width:auto;margin-top:8px;}
+.mm_chongzhi ul li{float:left; font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FC0;}
+.mm_chongzhi ul li b{margin-left:20px;}
+
+.mm_anquan{width:400px;height:30px;border-bottom:1px dotted #666;margin-left:20px;}
+.mm_anquan ul{list-style:none;padding:0px;width:auto;margin-top:8px;}
+.mm_anquan ul li{float:left; font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FC0;}
+.mm_anquan ul li b{margin-left:20px;}
+
+.mm_wanshan{width:400px;height:30px;border-bottom:1px dotted #666;margin-left:20px;}
+.mm_wanshan ul{list-style:none;padding:0px;width:auto;margin-top:8px;}
+.mm_wanshan ul li{float:left; font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FC0;}
+.mm_wanshan ul li b{margin-left:20px;}
+/*最近玩过的游戏*/
+.playedbox{width:730px;height:295px;background:#333;margin-top:15px;margin-left:20px;border:1px solid #000;}
+.n{height:22px;float:left; font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FC0;margin-left:20px;margin-top:10px;border-bottom:1px dotted #666;}
+.zuijin{height:22px; font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FC0;margin-left:20px;margin-top:10px;border-bottom:1px dotted #666;}
+
+
+.played{}
+.iplay {margin:1px 1px;;_margin:8px auto;}
+.iplay li{margin:6px 2px;
+			height:70px;width:234px;
+			padding-left:1px;padding-top:1px;
+			padding-bottom:1px; 
+			border-right:1px dashed #666;
+			border-bottom:1px dashed #666;
+			border-left:1px dashed #666;
+			border-top:1px dashed #666;
+			background:#555;
+			float:left;}
+.iplay img{float:left;width:80px;height:70px;padding-right:20px;}
+.iplay li div{position:relative;float:right;width:180px;}
+
+.ipay{position:absolute;bottom:4px;left:60px;width:61px;height:22px;background:url("btn_pay[1].png") no-repeat 0 0;text-align:center; color:#666; }
+.iplay .p1{color:#FC0;font-family:微软雅黑,宋体,arial,sans-serif;font-size:18px;font-wight:bold;}
+.iplay .p2{margin:0 1px;}
+.iplay .pp{padding-bottom:8px;margin-left:-10px;color:#fff;}
+.iplay .p2 a{display:block;font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#fff;}
+.iplay .p2 a:hover{color:#Fc0;}
+.iplay .p3{margin:-20px 70px;}
+.iplay .p3 a{display:block;font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#fff;}
+.iplay .p3 a:hover{color:#Fc0;}
+.iplay .noyet{width:660px;line-height:60px;padding-left:20px;}
+.iplay .noyet a{color:#090;font-weight:bold;}
+
+
+/*火爆游戏*/
+.con2_margin{margin:20px auto;width:728px;height:570px;}
+.con2_bg{width:120px;height:150px;float:left;margin-left:15px;}
+.con2_bg img{width:120px;height:80px;padding-bottom:2px;}
+.con2_bg .btt{width:120px;height:27px;background:url("con2btt.png");text-align:center;overflow:hidden;
+			  font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FFF;}
+.con2_bg .btt a{padding-top:5px;color:#FFF;}
+.con3_shigong{margin:250px 340px;color:#ff0;}
+
+
+#uc_box{ background:url("bg_uc_box1.png") no-repeat;width:228px;height:580px;_background:url("bg_uc_box_0[1].jpg") no-repeat 0 0;}
+.login_b div,.login_a div{margin:6px 5px;}
+#uc_box h3{height:50px; background: url("bg_uc_box1.png") no-repeat -245px 100px; _background: url("bg_uc_box.jpg") no-repeat -245px 0px;}
+.login_b .i label{display:inline-block; width:50px;line-height:24px; }/*登陆用户名和用户登陆字之间空隙*/
+.login_b .b p{}/*找回密码和登陆之间的空隙*/
+
+.login_b .b{text-align:center;}
+.login_b  .b p{text-align:left;padding-left:20px;}
+.login_b  .b p input{_vertical-align:text-bottom;}/*记住密码框颜色*/
+.login_b  .b p label{margin-left:-2px;}
+.login_b  .b a{margin:0 0 0 10px; color:#000;text-decoration:underline; }
+.login_b  .b a:hover{color:#000; }
+.login_b .b .hid{display:block;margin:18px 90px;width:97px;height:38px;background: url("bg_uc_box1.png") no-repeat -245px -60px; border:none; _background: url("bg_uc_box.jpg") no-repeat -324px -124px;}/*登陆按钮*/
+.login_b .b2{padding:0px 0 0; _padding-top:8px;}
+.login_b .b2 a{display:block;margin:25px -5px; width:193px;height:90px; background: url("bg_uc_box1.png") no-repeat -246px -280px; _background:url("bg_uc_box.jpg") no-repeat -300px -196px;}/*注册图标*/
+.login_b .i input{margin:1px 3px;width:126px;padding:1px 0 2px 1px; _padding:4px 0 4px 4px; font-family:arial;font-size:12px;background:url("blank[1].gif") no-repeat 0 0 ;border:1px solid #000; }/*input窗口样式*/
+.login_a .info{margin:0 auto;}/*一条黄色的线*/
+.login_a .info dl{ display:block; margin-left:8px;width:137px;font-weight:bold;line-height:18px; }
+.login_a .info dl strong{color:#ff0;}
+
+.login_a .b a{display:inline-block;margin:2px 2px;width:90px;height:26px;line-height:28px;text-align:center;color:#000000; background:url("icon[1].png") no-repeat 0 -120px;font-weight:bold;}
+.login_a .b2 a{padding-right:0px;_background-position:0 -155px;color:#dddddd; font-weight:bold;_background:url("tb[1].png") no-repeat 0 -691px;padding-top:5px;}
+.u_name{font-size:12px;width:210px;margin-top:30px;padding-left:10px;}
+.u_name p{padding-top:5px;}
+.u_name ul{position:absolute;top:-25px;right:10px;height:31px;background:url("slide[1].png") no-repeat 0 -31px;_background-position:0 -31px;}
+.u_name li{padding-right:10px;height:31px;margin-left:8px;line-height:26px;background:url("slide[1].png") no-repeat right 0;color:#060;font-weight:normal;}
+
+/*---#box---*/
+.box{ background-color:#f6f9f6; border:1px solid #e7e5d6; }
+.box h3{height:28px;background:url("t_box[1].png") repeat-x 0 0; }
+.box h3 strong{ margin-left:6px; font:bold 14px/26px arial,"锟斤拷锟斤拷";color:#3d8f06; padding-left:22px; background-image:url("icon[1].png");background-repeat:no-repeat; }
+.latest_news h3 strong{background-position:0 5px; }
+.box h3 .fr{margin-right:6px; color:#3d8f06; }
+.box .margin{margin:3px 3px; padding-left:0; padding-right:0;}
+.avata{width:200px;height:266px;border:1px;background:url("bg_avata[1].gif") no-repeat;}
+.dlfont{float:left; font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FFF; width:224px;}
+.dlfont ul{list-style:none;}
+.dlfont ul li{float:left;padding-top:1px;}
+.dlfont a {
+	border-bottom:1px dashed #464646;
+	text-align:center;
+	width:205px;
+	height:24px;
+	color:#fff;
+	display:block;
+	background:#464646;
+}
+.dlfont a:hover {
+	font-family:微软雅黑,宋体,arial,sans-serif;font-size:14px;font-wight:bold;color:#FFF;
+	text-align:center;
+	background:#F90;
+}
+
+

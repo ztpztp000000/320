@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main delay_time="5" menu_visible="yes" menu_axis="x" menu_x="10" menu_y="290" bannerBTN="no" menu_spacer="5" bgColor="0x2F2F2F" preloaderColor="0xffffff">
+  <slideshow>
+    <description_x>0</description_x>
+    <description_y>0</description_y>
+    <description_w>0</description_w>
+    <picture_path>/uploads/banner/pic_0.jpg</picture_path>
+    <date_path>
+    </date_path>
+     <web_address>http://www.320game.com/ns</web_address>
+    <picture_path2>/uploads/banner/pic_mini_0.jpg</picture_path2>
+    <id>2011050403070474</id>
+  </slideshow>
+  <slideshow>
+    <description_x>0</description_x>
+    <description_y>0</description_y>
+    <description_w>0</description_w>
+    <picture_path>/uploads/banner/pic_1.jpg</picture_path>
+    <date_path>
+    </date_path>
+     <web_address>http://www.320game.com/rxhzw</web_address>
+    <picture_path2>/uploads/banner/pic_mini_1.jpg</picture_path2>
+    <id>201104150055595559</id>
+  </slideshow>
+  <slideshow>
+    <description_x>0</description_x>
+    <description_y>0</description_y>
+    <description_w>0</description_w>
+    <picture_path>/uploads/banner/pic_2.jpg</picture_path>
+    <date_path>
+    </date_path>
+     <web_address>http://www.320game.com/sssg</web_address>
+    <picture_path2>/uploads/banner/pic_mini_2.jpg</picture_path2>
+    <id>201104070243464346</id>
+  </slideshow>
+  <slideshow>
+    <description_x>0</description_x>
+    <description_y>0</description_y>
+    <description_w>0</description_w>
+    <picture_path>/uploads/banner/pic_3.jpg</picture_path>
+    <date_path>
+    </date_path>
+     <web_address>http://www.w320game.com/zw</web_address>
+    <picture_path2>/uploads/banner/pic_mini_3.jpg</picture_path2>
+    <id>20110401001909199</id>
+  </slideshow>
+</main>

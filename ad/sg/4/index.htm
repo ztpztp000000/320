@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://www.game8787.com/index.html?mpid=29&sid=10003&cid=1 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="x-ua-compatible" content="ie=7">
+<title>盛世三国 - 三国策略游戏 起飞游戏运营平台戏</title>
+<link rel="stylesheet" href="http://www.game8787.com/8701/20120531/css.css">
+<style type="text/css">
+body { background-color:#000000; margin:0 auto;filter: Alpha(Opacity=100);font-size:12px;color:#000;}
+ul li{ list-style:none; clear:both; padding:0; margin:0;}
+.mine{  width:1000px;margin:0 auto; float:left; position:relative;}
+a{ color:#fff; text-decoration:none}
+a:hover{ text-decoration:underline}
+.conn {display: none; z-index: 1000; background:#000; filter: alpha(opacity=50); top: 0px; left:0px; width:100%; position: absolute; height:100%; -moz-opacity: 0.5; opacity: 0.5}
+.boxx {display: none; z-index: 1001;width:600px;  position: absolute;top:60px;left:260px;}
+
+/*注册框样式*/
+.list{background:url(8701/20120531/bg.gif) no-repeat; text-align:left; width:465px; height:292px; padding-left:170px; padding-top:98px;}
+.list li{ float:left; line-height:50px; height:52px; width:385px; color:#FFFFFF;}
+.list li .height{ border:0px; background:#59493f; height:30px; line-height:30px; width:150px;}
+.list li span { color:#f00; padding:0 3px;}
+.liimg{ width:110px; float:left;}
+.input {
+        FONT-SIZE: 12pt;
+        BORDER-BOTTOM: 0px 
+        color: #000000; 
+        height: 20px;
+        width: 160px;
+        } 
+li p{ float:left; font:18px bold; color:#000000; line-height:30px; padding:5px 0 0 0; margin:0;}
+li a{font:18px bold; color:#000000; text-decoration:none; }
+.tpk { z-index: 1009; border:0px; width:191px; height:47px; background:url(8701/20120531/but.jpg) no-repeat; float:left; cursor:pointer;}
+
+</style>
+<script type="text/javascript">
+var contextPath = "";
+var curPath = "8701/20120531";
+function goUrl()
+{		
+	document.getElementById('light').style.display='block'; 	
+	document.getElementById('reg_box').style.display='block'; 	
+}
+</script>
+<script type="text/javascript" src="game/login.js"></script>     
+        <script type="text/javascript" src="http://www.777fly.com/sssg/game/images/jquery.js"></script>
+        <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+<body>
+	
+<div class="cen">
+	<div class="mine" onmousedown="goUrl();">
+	  <div class="boxx" id="reg_box">
+		 <form method="post" action="http://www.777fly.com/user.php?action=register_ok" id="UserRegisterForm" name="reg-form">
+   				 <!-- 进入游戏参数设置 -->
+				<input type="hidden" name="logId" value="1518324">
+		  <ul class="list">
+			<li>
+			   <input type="text" name="member_username" class="input" id="username" style="margin-top:0px;">
+			   <span></span>
+			  </li>
+			<li>
+			 <input type="password" name="member_password" class="input" id="password" style="margin-top:0px;">
+			 <span></span>
+			  </li>
+			<li>
+			   <input type="password" name="member_password_confirm" style="margin-top:0px;" class="input" id="password_confirm">
+			   <span></span>
+			 </li>
+			<table width="73%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">
+                  <p>&nbsp;</p>
+                  <p><img src="8701/20120531/but.gif" width="191" height="47" align="left" style="width:191px; height:47px;margin:0 auto;" onclick="javascript:bts(4);"/>
+                         <input type="hidden" value="withtml5" name="post_mode">
+                          <input type="hidden" value="2" name="gameId">
+                          <input type="hidden" value="3" name="serverId">
+                          <input type="hidden" value="web" name="extra" />
+                          <input type="hidden" name="sp" value="1323">
+                  </p></td>
+                </tr>
+              </table>
+		  </ul>
+          
+		</form>
+	  </div>
+      
+      <div class="clear"></div>
+         <script type="text/javascript"> 
+        function bts(id){
+            if(id==1){
+                $("#log-box").hide();
+                $("#reg-box").show();
+            }
+            if(id==2){
+                $("#log-box").show();
+                $("#reg-box").hide();
+            }
+            
+            if(id==3){
+                var flag=true;
+                var member_username=$('#login_username').val();
+                var member_password=$('#login_password').val();
+                if(member_username==""){
+                    alert("请输入用户名");
+                    flag=false;
+                }
+                if(member_password==""){
+                    alert("请输入密码");
+                    flag=false;
+                }
+                if(flag)	$("#UserLoginForm").submit();
+            }
+            if(id==4){
+                var flag=true;
+                var member_username=$('#username').val();
+                var member_password=$('#password').val();
+                var member_password_confirm=$('#password_confirm').val();
+                if(member_username==""){
+                    alert("请输入用户名");
+                    flag=false;
+                }
+                if(member_password==""){
+                    alert("请输入密码");
+                    flag=false;
+                }
+                if(member_password!=member_password_confirm){
+                    alert("两次密码输入不一致");
+                    flag=false;
+                }
+                if(flag)	$("#UserRegisterForm").submit();
+            }
+        }
+        </script>
+        
+	  <span style="height:600px;">
+	  	<div class="swf" style="z-index:999">
+		<param name="menu" value="false"><param name="wmode" value="transparent"><param name="allowScriptAccess" value="never">
+  <embed src="8701/20120531/index.swf" width="980" height="580" menu="false" wmode="transparent" allowscriptaccess="sameDomain"></embed>
+</object>
+</noscript>	
+		</div>
+	  </span>
+	  <div class="conn" id="light"></div>
+	</div>
+</div>
+<script src="http://s23.cnzz.com/stat.php?id=4261608&web_id=4261608&show=pic" language="JavaScript"></script>
+</body></html>

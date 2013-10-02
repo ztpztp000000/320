@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><!--{$language.title}--></title>
+<LINK href="/templates/new_admin/img/main.css" type=text/css rel=stylesheet>
+<script type="text/javascript" src="/templates/new_admin/img/js/jquery.js"></script>
+<script type="text/javascript" SRC="/templates/new_admin/img/js/swfobject.js"></script>
+
+</head>
+<body>
+<div id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><h1>平台管理</h1></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<!--{$smarty.session.admin_name}--></b>,<!--{$language.welcome}-->
+				<span>|</span> <a href='?sort=start'><!--{$language.menu_main}--></a>
+                <span>|</span> <a href='?sort=start&do=log_list'><!--{$language.menu_log}--></a>
+				<span>|</span> <a href='?sort=start&do=clear_cache'><!--{$language.menu_clear}--></a>
+				<span>|</span> <a href='?sort=logout'><!--{$language.menu_logout}--></a>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<div>
+				<ul class="sf-menu">
+                <li><a HREF="?sort=start">首页</a></li>
+					<li  class="current"><a HREF="?sort=game_flat">管理平台</a></li>
+					<li><a HREF="?sort=websites">管理官网</a></li>
+					<li><a HREF="?sort=user">用户列表</a></li>	
+					<li><a HREF="?sort=pay">充值记录</a></li>
+                    <li><a HREF="?sort=graphs">图表</a></li>	
+				</ul>
+			</div>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<!-- End of Aside links -->
+		</div>
+	</div>
+	<!-- End of Header ----------------------------------------------------------------------------------------华丽丽的分割线-->
+</div>
+<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>平台管理 - 新手卡管理</h1>
+		</div>
+	</div>
+	<!-- End of Page title ------------------------------------------------------------------------------------------华丽丽的分割线-->
+
+<table width="1000" cellpadding="0" cellspacing="0" align="center">
+<tr>
+<td valign="top">
+<div class='title'>
+<a href="?sort=game_flat&action=tyro_card&do=card_add">添加新手卡</a>
+&raquo;&nbsp;新手卡列表</div>
+	<table cellspacing="1" cellpadding="0" width="100%">
+	<tr class="titlebg">
+	<td height="20" width="40" align="center">ID</td>
+	<td>名称</td>
+	<td width="80">数量</td>
+	<td width="80">剩余</td>
+	<td width="250" align="center">操作</td>
+	</tr>
+	<tr><td height="1" bgcolor="#eeeeee" colspan="5"></td></tr>
+	<!--{foreach from=$card_list item=card}-->
+	<tr>
+	<td height="30" align="center"><!--{$card.id}--></td>
+	<td><!--{$card.name}--></td>
+	<td><!--{$card.count}--></td>
+	<td><!--{$card.frees}--></td>
+	<td align="center">
+	<a href="?sort=game_flat&action=tyro_card&do=card_batch&card_id=<!--{$card.id}-->">导入卡号</a>
+	| <a href="?sort=game_flat&action=tyro_card&do=card_log&card_id=<!--{$card.id}-->">获取记录</a>
+	| <a href="?sort=game_flat&action=tyro_card&do=card_edit&card_id=<!--{$card.id}-->"><!--{$language.edit}--></a>
+	| <a href="?sort=game_flat&action=tyro_card&do=card_delete&card_id=<!--{$card.id}-->" onclick="return confirm('<!--{$language.confirm_delete}-->')"><!--{$language.delete}--></a>
+	</td>
+	</tr>
+	<tr><td height="1" bgcolor="#eeeeee" colspan="5"></td></tr>
+	<!--{foreachelse}-->
+	<tr><td height="50" colspan="5" align="center"><!--{$language.nodata}--></td></tr>
+	<!--{/foreach}-->
+	<tr><td height="50" colspan="5" align="right"><!--{$pagebar}--></td></tr>
+	</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

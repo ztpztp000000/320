@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><!--{$language.title}--></title>
+<LINK href="/templates/new_admin/img/main.css" type=text/css rel=stylesheet>
+<script type="text/javascript" src="/templates/new_admin/img/js/jquery.js"></script>
+<script type="text/javascript" src="/templates/new_admin/img/js/quxian.js"></script>
+<script type="text/javascript" SRC="js/swfobject.js"></script>
+</head>
+<body>
+	<div id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><h1>平台管理</h1></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<!--{$smarty.session.admin_name}--></b>,<!--{$language.welcome}-->
+				<span>|</span> <a href='?sort=start'><!--{$language.menu_main}--></a>
+                <span>|</span> <a href='?sort=start&do=log_list'><!--{$language.menu_log}--></a>
+				<span>|</span> <a href='?sort=start&do=clear_cache'><!--{$language.menu_clear}--></a>
+				<span>|</span> <a href='?do=logout'><!--{$language.menu_logout}--></a>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+                <li><a HREF="?sort=start">首页</a></li>
+					<li class="current"><a HREF="?sort=game_flat">管理平台</a></li>
+					<li><a HREF="?sort=websites">管理官网</a></li>
+					<li><a HREF="?sort=user">用户列表</a></li>	
+					<li><a HREF="?sort=pay">充值记录</a></li>
+                    <li><a HREF="?sort=graphs">图表</a></li>	
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<!-- End of Aside links -->
+		</div>
+	</div>
+	<!-- End of Header -->
+</div>
+<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>平台管理 -友情链接 - 编辑</h1>
+		</div>
+	</div>
+	<!-- End of Page title ------------------------------------------------------------------------------------------华丽丽的分割线-->
+ <table width="1000" cellpadding="0" cellspacing="0" align="center">
+<tr>
+<td valign="top">
+<div class='title'>
+<a href="?sort=game_flat&action=links&do=link_list"><!--{$language.link_list}--></a>
+&raquo;&nbsp;<!--{if $mode=='insert'}--><!--{$language.link_add}--><!--{else}--><!--{$language.link_edit}--><!--{/if}-->
+
+</div>
+<div class='item'>
+	<table width="100%">
+	<form action="?sort=game_flat&action=links&do=link_<!--{$mode}-->" method="post" name="link_info" enctype="multipart/form-data">
+		<tr>
+		<td align="right" width="80" height="30"><!--{$language.form_link_name}--></td>
+		<td><input type="text" name="link_name" class="input" size="60" value="<!--{$link.name|escape:html}-->" />		</td>
+		</tr>
+
+		<tr>
+		<td align="right" width="80" height="30"><!--{$language.form_link_text}--></td>
+		<td><input type="text" name="link_text" class="input" size="60" value="<!--{$link.text|escape:html}-->" />		</td>
+		</tr>
+
+		<tr>
+		<td align="right" width="80" height="30"><!--{$language.form_link_url}--></td>
+		<td><input type="text" name="link_url" class="input" size="60" value="<!--{$link.url|escape:html}-->" />		</td>
+		</tr>
+		<tr>
+		<td height="30"  align="right"><!--{$language.form_link_logo}--></td>
+		<td><input type="file" name="link_logo" size="40" value="<!--{$link.logo}-->" class="input"/>
+		<!--{if $link.logo}-->
+		<a href="uploads/<!--{$link.logo}-->" target="_blank"><img src="uploads/<!--{$link.logo}-->" alt="" align="absmiddle" style="width:88px;height:31px;border:none"/></a>
+		<label><input type="checkbox" name="link_logo_delete" value="<!--{$link.logo}-->" /> <!--{$language.delete}--></label>
+		<input type="hidden" name="link_logo_old" value="<!--{$link.logo}-->"/>
+		<!--{/if}-->
+		</td>
+		</tr>
+		<tr>
+		<td align="right" height="30"><!--{$language.form_link_sort}--></td>
+		<td><input type="text" name="link_sort" class="input" size="5" value="<!--{$link.sort}-->" />	
+		</td>
+		</tr>		
+		<tr>
+		<td align="right" height="30"><!--{$language.form_link_state}--></td>
+		<td>
+		<label><input type="radio" name="link_state" value="1" {if $link.state==1}checked{/if} /> <!--{$language.form_link_state_1}--></label>
+		<label><input type="radio" name="link_state" value="0" {if $link.state==0}checked{/if} /> <!--{$language.form_link_state_0}--></label>
+		</td>
+		</tr>	
+		
+		<tr>
+  		<td align="right" height="30">所属游戏</td>
+ 		 <td>
+  		<select name="game_id">
+		<!--{foreach from=$game_list item=game}-->
+		<option value="<!--{$game.id}-->" {if $link.game_id==$game.id}selected{/if}><!--{$game.name}--></option>
+		<!--{/foreach}-->
+		</select>
+  		</td>
+		</tr>
+		
+		<tr>
+		<td height="30" align="right"><!--{$language.form_content_attribute}--></td>
+		<td>
+			<label><input type="checkbox" name="is_show_home" value="1" {if $link.is_show_home==1}checked{/if} /> 平台同步添加</label>
+		</td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30">&nbsp;</td>
+		<td>
+		<input type="submit" value="<!--{$language.submit}-->" class="button"/>
+		</td>
+		</tr>
+		<input type="hidden" name="link_id" value="<!--{$link.id}-->"/>
+	</form>
+	</table>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

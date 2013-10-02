@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+.mainbg{width:100%;height:600px;background:url("mainbg.png");}
+.top{width:100%;min-width:1000px;height:40px;background:url(top_bg.gif) repeat-x; color:9f9f9f; font-size:12px; position:relative; z-index:1000px; font-family:Arial;}
+.ttop{width:986px;height:40px;margin:0 auto;position:relative;}
+.register{float:right;display:inline;margin:0;}
+.toplist{float:left;display:inline;padding-right:20px;color:#ff6;line-height:16px; margin-top:12px;}
+.www{width:195px;height:30px;background:url(www.png) no-repeat;float:left;}
+.toplist a{color:#FF0;padding-left:5px;}
+.toplist a hover{color:#fff;}
+.toplist a{color:#FF0;padding-left:5px;}
+.toplist a hover{color:#fff;}
+
+.game_main{width:980px;margin:0 auto;height:350px;padding-top:10px;}
+.game_left{float:left;width:730px;height:800px;border:1px solid #000;background:url("yxlbbg.png");}
+.game_right{float:right;width:228px;height:800px;}
+.game_gg{width:235px;height:450px;background:#fff;margin-top:20px;border:1px solid #333;}
+.yxlb{width:730px;height:80px;background:url("yxlb.png") no-repeat;}

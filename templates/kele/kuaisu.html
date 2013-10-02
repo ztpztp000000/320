@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><!--{$config.site_name}--></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+<!--
+
+.mydiv {
+background-color: #FFCC66;
+text-align: center;
+line-height: 30px;
+font-size: 12px;
+z-index:999;
+width: 390px;
+height: 245px;
+left:50%;
+top:30%;
+margin-left:-150px!important;/*FF IE7 该值为本身宽的一半 */
+margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+margin-top:0px;
+position:fixed!important;/* FF IE7*/
+position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+
+}
+
+.bg,.popIframe {
+background-color: #666; display:none;
+width: 100%;
+height: 100%;
+left:0;
+top:0;/*FF IE7*/
+filter:alpha(opacity=50);/*IE*/
+opacity:0.5;/*FF*/
+z-index:1;
+position:fixed!important;/*FF IE7*/
+position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);
+}
+.popIframe {
+filter:alpha(opacity=0);/*IE*/
+opacity:0;/*FF*/
+}
+-->
+</style>
+<script language="javascript" type="text/javascript">
+function showDiv(){
+document.getElementById('popDiv').style.display='block';
+document.getElementById('popIframe').style.display='block';
+document.getElementById('bg').style.display='block';
+}
+function closeDiv(){
+document.getElementById('popDiv').style.display='none';
+document.getElementById('bg').style.display='none';
+document.getElementById('popIframe').style.display='none';
+
+}
+</script>
+
+</head>
+<body>
+<div id="popDiv" class="mydiv" style="display:none;margin-left:5px;text-align:left">
+<div style="clear:both;float:right;background:grey;width:100%;text-align:right;"><a href="javascript:closeDiv()" style="margin-right:5px"><b>关闭</b></a></div>
+<div style="clear:both;margin-left:5px;"><b>重要提示：</b></div>
+<div style="clear:both;margin-left:5px;">1、12月9日广发银行周五乐翻天活动开始时间由原定的0：00改为9：00。</div>
+<div style="clear:both;margin-left:5px;">2、用户名改为您注册时留下的邮箱或手机号码，密码不变。</div>
+<div style="clear:both;margin-left:5px;">3、支付成功之后无需手动绑定手机号，含验证码的短信会直接发送给至用户注册的手机号。</div>
+<div style="clear:both;margin-left:5px;">4、取消原有的每笔订单都采用相同验证码的制度，实行不同订单采用不同验证码的制度，所以请用户务必保存好收到的短信，不要误删。</div>
+
+</div>
+<div class="box" id="box1" style="bottom:0;left:0;"><a href="javascript:showDiv()">点击这里弹出层</a></div>
+<div id="bg" class="bg" style="display:none;"></div>
+
+<iframe id='popIframe' class='popIframe' frameborder='0' ></iframe>
+</body>
+</html>
+

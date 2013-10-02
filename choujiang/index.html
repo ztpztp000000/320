@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>双节豪礼送不停！抽奖系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="要够玩抽奖" />
+<meta name="description" content="游戏 要够玩 中秋 中秋抽奖" />
+<LINK href="img/common.css" type=text/css rel=stylesheet>
+<LINK href="img/reset.css" type=text/css rel=stylesheet>
+
+<!--[if lte IE 6]>
+<script src="/templates/kele/img/fixPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.pngfix');
+</script>
+<![endif]-->
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+
+<script>	
+function turnPlate() {
+  $.post("turn_plate.php",
+	      {act: "turnPlate"},
+	      function( data ) {
+            $('#flash').html(data);
+			return false;
+           });
+}
+</script>
+
+
+</head>
+<body class="bagrd"> 
+<table width="1024">
+<tr><td>
+<div class="flashlk">
+<div class="flash" id="flash">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="497" height="497" id="turnplate">
+ 	<param name="allowScriptAccess" value="always" />
+    <param name="FlashVars" id="FlashVars" value="fvar=0&tips=" />
+    <param name="movie" value="turnplate.swf">
+    <param name="menu" value="false">
+    <param name="quality" value="high">
+    <param name="wmode" value="transparent">
+    <embed src="turnplate.swf" FlashVars="fvar=0&tips=" id="FlashVars"  width="480" height="480"  quality="high" id="turnplate" name="turnplate" wmode="transparent" allowScriptAccess="always"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+</object>
+</div>
+</div></td></tr></table>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><!--{$language.title}--></title>
+<LINK href="/templates/new_admin/img/main.css" type=text/css rel=stylesheet>
+<script type="text/javascript" src="/scripts/jquery.js"></script>
+
+<script type="text/javascript" src="/scripts/jquery.calendar.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#stime").cld();
+  $("#etime").cld();
+});
+</script>
+</head>
+<body>
+<div id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><h1>用户管理</h1></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<!--{$smarty.session.admin_name}--></b>,<!--{$language.welcome}-->
+				<span>|</span> <a href='?sort=start'><!--{$language.menu_main}--></a>
+                <span>|</span> <a href='?sort=start&do=log_list'><!--{$language.menu_log}--></a>
+				<span>|</span> <a href='?sort=start&do=clear_cache'><!--{$language.menu_clear}--></a>
+				<span>|</span> <a href='?do=logout'><!--{$language.menu_logout}--></a>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+                <li><a HREF="?sort=start">首页</a></li>
+					<li><a HREF="?sort=game_flat">管理平台</a></li>
+					<li><a HREF="?sort=websites">管理官网</a></li>
+					<li class="current"><a HREF="?sort=user">用户列表</a></li>	
+					<li><a HREF="?sort=pay">充值记录</a></li>
+                    <li><a HREF="?sort=graphs">图表</a></li>	
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<!-- End of Aside links -->
+		</div>
+	</div>
+	<!-- End of Header ----------------------------------------------------------------------------------------华丽丽的分割线-->
+<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>管理用户</h1>
+		</div>
+	</div>
+	<!-- End of Page title ------------------------------------------------------------------------------------------华丽丽的分割线-->
+	<!-- End of user manager ------------------------------------------------------------------------------------------华丽丽的分割线-->
+
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top">
+<div class='title'><a href="?sort=user&do=member_list"><!--{$language.member_list}--></a>&raquo;&nbsp;<!--{if $mode=='insert'}--><!--{$language.member_add}--><!--{else}--><!--{$language.member_edit}--><!--{/if}--></div>
+<div class='item'>
+<table width="100%">
+	<form action="?sort=user&do=member_<!--{$mode}-->" method="post" enctype="multipart/form-data">
+
+		<tr>
+		<td align="right" height="30">用户名：</td>
+		<td>
+		<!--{if $mode=='insert'}-->
+		<input type="text" name="member_username"  size="40" value="<!--{$member.username|escape:html}-->" class="input" />
+		<!--{else}-->
+		<!--{$member.username}-->
+		<input type="hidden" name="member_username" value="<!--{$member.username|escape:html}-->" />
+		<!--{/if}-->
+		</td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_password}--></td>
+		<td><input type="password" name="member_password" size="40" value="<!--{if $mode!='insert'}-->passwd<!--{/if}-->" class="input"/></td>
+		</tr>
+
+		<tr>
+		<td align="right" width="100" height="30"><!--{$language.form_member_mail}--></td>
+		<td>
+		<input type="text" name="member_mail" size="40" value="<!--{$member.mail|escape:html}-->" class="input"/>
+		</td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_safecode}--></td>
+		<td><input type="password" name="member_safecode" size="40" value="" class="input"/></td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_group}--></td>
+		<td><select name="group_id"><option value="0"><!--{$language.select}--></option><!--{html_options options=$member_group selected=$member.group_id}--></select></td>
+		</tr>
+
+		<tr><td colspan="2" height="30"></td></tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_nickname}--></td>
+		<td><input type="text" name="member_nickname" size="20" value="<!--{$member.nickname|escape:html}-->" class="input"/></td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_name}--></td>
+		<td><input type="text" name="member_name" size="20" value="<!--{$member.name|escape:html}-->" class="input"/></td>
+		</tr>
+		<tr>
+		<td align="right" height="30">身份证：</td>
+		<td><input type="text" name="member_card" size="20" value="<!--{$member.card|escape:html}-->" class="input"/></td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_sex}--></td>
+		<td>
+		<label><input type="radio" name="member_sex" value="0" {if $member.sex==0}checked{/if} /> <!--{$language.form_member_sex_1}--></label>
+		<label><input type="radio" name="member_sex" value="1" {if $member.sex==1}checked{/if}/> <!--{$language.form_member_sex_2}--></label>
+		</td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_birthday}--></td>
+		<td><input type="text" name="member_birthday" readonly  bj="cBj" id="member_birthday" size="20" value="<!--{$member.birthday}-->" class="input"/></td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_phone}--></td>
+		<td><input type="text" name="member_phone" size="20" value="<!--{$member.phone|escape:html}-->" class="input"/></td>
+		</tr>
+
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_photo}--></td>
+		<td><input type="file" name="member_photo" size="20" class="input"/>	
+		<!--{if $member.photo}-->
+		<a href="uploads/<!--{$member.photo}-->" target="_blank"><img src="uploads/<!--{$member.photo}-->" alt="" align="absmiddle" style="width:20px;height:20px;border:1px solid #ccc;padding:1px"/></a>
+		<label><input type="checkbox" name="member_photo_delete" value="<!--{$member.photo}-->" /> <!--{$language.delete}--></label>
+		<input type="hidden" name="member_photo_old" value="<!--{$member.photo}-->"/>
+		<!--{/if}-->
+		</td>
+		</tr>
+
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_from}--></td>
+		<td><input type="text" name="member_from" size="40" value="<!--{$member.from|escape:html}-->" class="input"/></td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_other}--></td>
+		<td><textarea name="member_other" cols="60" rows="5" class="input"><!--{$member.other|escape:html}--></textarea></td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_validation}--></td>
+		<td>
+		<label><input type="radio" name="member_validation" value="1" {if $member.validation==1}checked{/if} /> <!--{$language.form_member_validation_1}--></label>
+		<label><input type="radio" name="member_validation" value="0" {if $member.validation==0}checked{/if} /> <!--{$language.form_member_validation_0}--></label>
+		</td>
+		</tr>
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_state}--></td>
+		<td>
+		<label><input type="radio" name="member_state" value="1" {if $member.state==1}checked{/if} /> <!--{$language.form_member_state_1}--></label>
+		<label><input type="radio" name="member_state" value="0" {if $member.state==0}checked{/if} /> <!--{$language.form_member_state_0}--></label>
+		</td>
+		</tr>	
+<!--{if $mode=='update'}-->
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_join_time}--></td>
+		<td><!--{$member.join_time}--></td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_last_time}--></td>
+		<td><!--{$member.last_time}--></td>
+		</tr>
+
+		<tr>
+		<td align="right" height="30"><!--{$language.form_member_last_ip}--></td>
+		<td><!--{$member.last_ip}--></td>
+		</tr>
+<!--{/if}-->
+		<tr>
+		<td align="right" height="30">&nbsp;</td>
+		<td>
+		<input type="submit" value="<!--{$language.submit}-->" class="button"/>
+		</td>
+		</tr>
+		<input type="hidden" name="member_id" value="<!--{$member.id}-->"/>
+	</form>
+	</table>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

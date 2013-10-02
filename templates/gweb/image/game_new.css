@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+
+.xinfu_list_top{width:230px;height:30px;line-height:30px;background:#F90;}
+.xinfu_list_top strong{padding-left:75px;color:#fff;}
+.xinfu_list{width:230px;height:300px;background:#fff;}
+.xinfu_list .top{height:30px;line-height:30px;}
+.xinfu_content{width:230px;}
+.xinfu_content li{height:30px;line-height:30px;padding-left:10px;border-bottom:1px dashed #ccc;color:#F90;}
+.xinfu_content li a{color:#0F0;}
+.xinfu_content li img{margin-right:4px;}
+.xinfu_content li a:hover{color:#FF0;}
+.xinfu_content li b{padding-left:4px;}

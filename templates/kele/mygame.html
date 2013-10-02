@@ -1,0 +1,21 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title><!--{$game_title}--></title>
+    </head>
+    <body>
+    	<div style="display:none;">
+        <iframe src="<!--{$pai_api}-->pay/user.php?user=<!--{$p_user}-->&site=<!--{$p_site}-->"></iframe>
+        </div>
+         
+        <iframe scrolling="auto" id="ifm" frameborder="0" marginwidth="0" marginheight="0" height="100%" width="100%" src="<!--{$game_url}-->"></iframe>
+        
+        <!--{if $show_mm==1}-->       
+        <script type="text/javascript" src="http://www.mojiyule.com/imoji/common/imoji_jquery.js"></script>
+		<script type="text/javascript" src="http://www.mojiyule.com/imoji/common/imoji_swfobject.js"></script>
+		<script type="text/javascript" src="<!--{$mm_url}-->" id="imojitvScript"></script>
+		<script type="text/javascript">playerButton('create');</script>
+        <!--{/if}-->
+    </body>
+</html>
+

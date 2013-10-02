@@ -1,0 +1,6 @@
+.tmenu{margin:10px; 0 0 0;} /**顶部导航样式**/
+#top01{width:auto; height:42px; background:url("n-top.jpg");}/**顶部背景样式**/
+.top{height:100px; width:970px; overflow:hidden; margin:0 auto; background:url("n-top.jpg");}/**顶部背景样式**/
+#logo{margin:8px 0 0 3px; float:left;}/**顶部logo位置**/
+
+#header01{margin:0 auto 18px; width:969%; height:94px;background:url("001top.png");}

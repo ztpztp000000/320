@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=" http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>选项卡</title>
+<script>
+<!--
+function setTab(name,cursel,n){
+for(i=1;i<=n;i++){
+var menu=document.getElementById(name+i);/* two1 */
+var con=document.getElementById("con_"+name+"_"+i);/* con_two_1 */
+menu.className=i==cursel?"hover":"";/*三目运算  等号优先*/
+con.style.display=i==cursel?"block":"none";
+}
+}
+//-->
+</script>
+<style type="text/css">
+.city_ser_show{display:none;width:490px;height:200px;border:1px solid #CCCCCC;}
+#con_two_1{display:block;}
+#menubox{width:500px;height:24px;margin-bottom:7px;}
+#menubox ul{margin:0;padding:0;}
+#menubox ul li{float:left;list-style:none;display:inline;padding-top:7px;border:1px solid #D1D1D1;border-bottom:0px;margin:0 10px;white-space:nowrap; text-
+overflow:ellipsis;cursor:pointer;width:60px;height:24px;text-align:center;font-size:14px;overflow:visible;}
+#menubox ul li.hover{border-top:2px solid #D1D1D1;border-right:2px solid #D1D1D1;border-left:2px solid #D1D1D1;color: #000000;font-weight:bold;border-bottom:0px solid #D1D1D1;}
+</style>
+</head>
+<body>
+<div id="main">
+<div id="menubox">
+<!--样式1  滑动选项卡-->
+<!--
+<ul>
+<li id="two1" onmousemove="setTab('two',1,6)" class="hover">选项卡1</li>
+<li id="two2" onmousemove="setTab('two',2,6)">选项卡2</li>
+<li id="two3" onmousemove="setTab('two',3,6)">选项卡3</li>
+<li id="two4" onmousemove="setTab('two',4,6)">选项卡4</li>
+<li id="two5" onmousemove="setTab('two',5,6)">选项卡5</li>
+<li id="two6" onmousemove="setTab('two',6,6)">选项卡6</li>
+</ul>
+-->
+<!--样式2 --> 
+<ul>
+<li id="two1" onclick="setTab('two',1,6)" class="hover"><a>选项卡1</a></li>
+<li id="two2" onclick="setTab('two',2,6)"><a>选项卡2</a></li>
+<li id="two3" onclick="setTab('two',3,6)"><a>选项卡3</a></li>
+<li id="two4" onclick="setTab('two',4,6)"><a>选项卡4</a></li>
+<li id="two5" onclick="setTab('two',5,6)"><a>选项卡5</a></li>
+<li id="two6" onclick="setTab('two',6,6)"><a>选项卡6</a></li>
+</ul>
+</div>
+<div id="conten">
+<div class="city_ser_show" id="con_two_1">
+选项卡1
+<p>选项卡1的值</p>
+</div>
+<div class="city_ser_show" id="con_two_2">
+选项卡2
+<p>选项卡2的值</p>
+</div>
+<div class="city_ser_show" id="con_two_3">
+选项卡3
+<p>选项卡3的值</p>
+</div>
+<div class="city_ser_show" id="con_two_4">
+选项卡4
+<p>选项卡4的值</p>
+</div>
+<div class="city_ser_show" id="con_two_5">
+选项卡5
+<p>选项卡5的值!</p>
+</div>
+<div class="city_ser_show" id="con_two_6">
+选项卡6
+<p>选项卡6的值!</p>
+</div>
+</div>
+</div>
+</body>
+</html

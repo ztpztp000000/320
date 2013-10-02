@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*热门游戏和热门活动*/
+.hot{height:97px;width:745pxmargin:0 auto;}
+.hotmain{width:745px;height:85px;position:relative;background-color:#FFF;margin:4px auto;}
+.center{margin:0 auto;}
+.part0{
+			margin:1px 1px;}
+.part1{border-bottom:#cacaca 1px solid;
+			border-left:#cacaca 1px solid;
+			width:180px;height:80px;
+			border-top:#cacaca 1px solid;
+			border-right:#cacaca 1px solid;
+			float:left;
+			margin-left:3px;}
+.parlink{
+		height:80px;height:180px;
+}

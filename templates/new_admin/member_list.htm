@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><!--{$language.title}--></title>
+<LINK href="/templates/new_admin/img/main.css" type=text/css rel=stylesheet>
+<script type="text/javascript" src="/scripts/jquery.js"></script>
+
+<script type="text/javascript" src="/scripts/jquery.calendar.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#stime").cld();
+  $("#etime").cld();
+});
+</script>
+</head>
+<body>
+	<div id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><h1>用户管理</h1></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<!--{$smarty.session.admin_name}--></b>,<!--{$language.welcome}-->
+				<span>|</span> <a href='?sort=start'><!--{$language.menu_main}--></a>
+                <span>|</span> <a href='?sort=start&do=log_list'><!--{$language.menu_log}--></a>
+				<span>|</span> <a href='?sort=start&do=clear_cache'><!--{$language.menu_clear}--></a>
+				<span>|</span> <a href='?do=logout'><!--{$language.menu_logout}--></a>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+                <li><a HREF="?sort=start">首页</a></li>
+					<li><a HREF="?sort=game_flat">管理平台</a></li>
+					<li><a HREF="?sort=websites">管理官网</a></li>
+					<li class="current"><a HREF="?sort=user">用户列表</a></li>	
+					<li><a HREF="?sort=pay">充值记录</a></li>
+                    <li><a HREF="?sort=graphs">图表</a></li>	
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<!-- End of Aside links -->
+		</div>
+	</div>
+	<!-- End of Header ----------------------------------------------------------------------------------------华丽丽的分割线-->
+<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>管理用户</h1>
+		</div>
+	</div>
+	<!-- End of Page title ------------------------------------------------------------------------------------------华丽丽的分割线-->
+	<!-- End of user manager ------------------------------------------------------------------------------------------华丽丽的分割线-->
+
+<table width="980" cellpadding="0" cellspacing="0" align="center";>
+<tr>
+<td valign="top">
+<div class='title'><a href="?sort=user&do=member_add"><!--{$language.member_add}--></a>&raquo;&nbsp;<!--{$language.member_list}--></div>
+<div>
+	<form action="?sort=user" method="post">
+	<table width="99%" border="0" cellspacing="2" cellpadding="2" align="center">
+	  <tr>
+	    <td width="480">时间：
+			<select name="time_type">
+				<option value="1" {if $search.time_type==1}selected="selected"{/if}>注册时间</option>
+				<option value="2" {if $search.time_type==2}selected="selected"{/if}>最后登陆时间</option>
+			</select>
+			<input id="stime" name="stime" type="text" size="15" value="<!--{$search.stime}-->" readonly bj="cBj" />
+			-
+			<input id="etime" name="etime" type="text" size="15" value="<!--{$search.etime}-->" readonly bj="cBj" /></td>
+	    <td width="240">用户名：
+	      <input name="username" type="text" size="20" value="<!--{$search.username}-->" /></td>
+	    <td><input type="submit" name="Submit" value="提交查询" style="padding:2px 5px" /></td>
+	  </tr>
+	</table>
+	</form>
+	<table cellspacing="1" cellpadding="0" width="100%">
+	<tr class="titlebg">
+		<!--
+		<td width="30" align="center"></td>
+		-->
+		<td height="20" width="80" align="center">ID</td>
+		<td>用户名</td>
+		<td width="150">注册时间</td>
+		<td width="100">注册IP</td>
+		<td width="150">最后登陆时间</td>
+		<td width="80">状态</td>
+		<td width="150">推广渠道</td>
+		</tr>
+		<form action="?sort=user&do=member_delete" method="post" name="member_list">
+		<!--{foreach from=$member_list item=member}-->
+		<tr>
+		<!--
+		<td width="30" align="center"><input type="checkbox" name="member_id[]" value="<!--{$member.id}-->" /></td>
+		-->
+		<td height="30" width="80" align="center"><!--{$member.id}--></td>
+		<td><a href="?sort=user&do=member_edit&member_id=<!--{$member.id}-->"><!--{$member.username}--></a></td>
+		<td width="150"><!--{$member.join_time}--></td>
+		<td width="100"><!--{$member.join_ip}--></td>
+		<td width="150"><!--{$member.last_time}--></td>
+		<td width="80">
+		{if $member.state==1}<!--{$language.form_member_state_1}-->{/if}
+		{if $member.state==0}<!--{$language.form_member_state_0}-->{/if}
+		</td>
+		<td width="150"><!--{$member.spread_user}--> - <a href="?sort=user&do=sp&sp_id=<!--{$member.id}-->">推广数据</a></td>
+		</tr>
+		<tr><td height="1" bgcolor="#eeeeee" colspan="8"></td></tr>
+		<!--{foreachelse}-->
+		<tr><td height="50" colspan="8" align="center"><!--{$language.nodata}--></td></tr>
+		<!--{/foreach}-->
+		</form>
+		<!--{if $member_list}-->
+		<tr>
+		<!--
+		<td height="30" width="30" align="center"><input type="checkbox" onclick="batch('member_list',this)"  /></td>
+		<td colspan="7">
+		<table width="100%">
+		<tr>
+		<td width="100">
+		<select onchange="batch_do('member_list',this.options[this.selectedIndex].value)">
+		<option><!--{$language.select}--></option>
+		<option value="delete"><!--{$language.selected_delete_member}--></option>
+		</select>
+		</td>
+		</tr></table>
+		</td>
+		-->
+		<td colspan="7" align="right"><!--{$pagebar}--></td>
+		</tr>
+		<!--{/if}-->
+	</table>
+</td>
+</tr>
+</table></tr>
+</body>
+</html>

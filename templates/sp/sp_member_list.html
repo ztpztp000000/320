@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title><!--{$language.title}--></title>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+</head>
+<body>
+<!--{include file="top.htm"}-->
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td width="150" valign="top"><!--{include file="left.htm"}--></td>
+<td valign="top">
+<div class='title'>
+<a href="?action=sp&do=sp_member_add">添加推广员</a>
+&raquo;&nbsp;推广员列表</div>
+	<table cellspacing="1" cellpadding="0" width="100%">
+	<tr class="titlebg">
+	<td height="20" width="40" align="center">ID</td>
+	<td width="80" align="center">用户名</td>
+	<td width="80" align="center">推广人数</td>
+	<td width="80" align="center">推广总金额</td>
+	<td width="80" align="center">可提现金额</td>
+	<td width="250" align="center">操作</td>
+	</tr>
+	<tr><td height="1" bgcolor="#eeeeee" colspan="4"></td></tr>
+	<!--{foreach from=$sp_member_list item=sp_member}-->
+	<tr>
+	<td height="40" width="40" align="center"><!--{$sp_member.id}--></td>
+	<td width="80" align="center"><!--{$sp_member.name}--></td>
+	<td width="80" align="center"><!--{$sp_member.member_count}--></td>
+	<td width="80" align="center"><!--{$sp_member.total_money}--></td>
+	<td width="80" align="center"><!--{$sp_member.cashed_money}--></td>
+	<td width="250" align="center">
+	<a href="?action=sp&do=sp_member_info&sp_member_id=<!--{$sp_member.id}-->"><!--{$language.detail}--></a>
+	| <a href="?action=sp&do=sp_member_delete&sp_member_id=<!--{$sp_member.id}-->" onclick="return confirm('<!--{$language.confirm_delete}-->')"><!--{$language.delete}--></a>
+	</td>
+	</tr>
+	<tr><td height="1" bgcolor="#eeeeee" colspan="4"></td></tr>
+	<!--{foreachelse}-->
+	<tr><td height="50" colspan="4" align="center"><!--{$language.nodata}--></td></tr>
+	<!--{/foreach}-->
+	<tr><td height="50" colspan="4" align="right"><!--{$pagebar}--></td></tr>
+	
+	<tr class="sp_co">
+		<td width="200" align="center">推广总人数: <!--{ $total_user}--></td>
+		<td width="200" align="center">推广总金额: <!--{ $total_money}--></td>
+		<td width="200" align="center">可提现金额: <!--{ $cashed_money}--></td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

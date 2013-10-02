@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><!--{$config.site_name}--></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="<!--{$config.site_keywords|escape:html}-->" />
+<meta name="description" content="<!--{$config.site_description|escape:html}-->" />
+<LINK href="/templates/kele/image/reset1.css" type=text/css rel=stylesheet>
+<LINK href="/templates/kele/image/game.css" type=text/css rel=stylesheet>
+<LINK href="/templates/kele/image/banner.css" type=text/css rel=stylesheet>
+<!--[if lte IE 6]>
+<script src="/templates/kele/img/fixPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.pngfix');
+</script>
+<![endif]--> 
+<script type="text/javascript" src="scripts/jquery.js"></script>
+</head>
+<body>
+<!--{include file="header.html"}-->
+ 
+<div class="mainbg">
+	<div class="game_main"><h1 class="logo"><img src="templates/kele/image/ooxxsm.png" /></h1>
+		<div class="game_left">
+			<div class="yxlb"></div>
+             <!--游戏列表-->
+    <div class=margin>
+		<div class="recommend_list">
+		  <p><strong><span id="lblGameTitle"><!--{$game_name}--></span>新手礼包</strong></p>
+		</div>
+		<!--{if $card_list}-->
+		<div class="xsk_content">
+			<h2>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">服务器名称</td>
+                <td width="30%" align="center">限制</td>
+                <td width="35%" align="center">领取礼包</td>
+              </tr>
+            </table>
+			</h2>
+			<ul>
+				<!--{foreach from=$card_list item=card}-->
+				<li>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					  <tr>
+						<td align="center"><!--{$card.name}--></td>
+						<td width="30%" align="center">无限制</td>
+						<td width="35%" align="center">
+						<!--{if $card.link!=''}-->
+							<a href="<!--{$card.link}-->" target="_blank">我要领取</a>
+						<!--{else}-->
+							<!--{if $card.free==0}-->
+							发放结束
+							<!--{else}-->
+							<a href="card.php?action=get_card&id=<!--{$card.id}-->&gid=<!--{$game_id}-->&free=<!--{$card.free}-->"><img src="templates/kele/img/cd_btn2.gif" border="0" /></a>
+							<!--{/if}-->
+						<!--{/if}-->
+						</td>
+					  </tr>
+				  </table>
+				</li>
+				<!--{/foreach}-->
+			</ul>
+	  </div>
+	  <!--{/if}-->
+    </div>
+  </div>
+        <div class="game_right"><DIV id=uc_box><!--{include file="part_login.html"}--></DIV></div></div><!--{include file="footer.html"}--></div>
+
+</body>
+</html>

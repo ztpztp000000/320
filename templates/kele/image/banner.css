@@ -1,0 +1,13 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/*顶部*/
+.top{width:100%;min-width:1000px;height:40px;background:url(top_bg.gif) repeat-x; color:9f9f9f; font-size:12px; position:relative; z-index:1000px; font-family:Arial;}
+.ttop{width:986px;height:40px;margin:0 auto;position:relative;}
+.register{float:left;display:inline;margin:0;}
+.toplist{float:left;display:inline;padding-left:150px;color:#ff6;line-height:16px; margin-top:12px;}
+.topurl{float:right;display:inline;line-height:16px; margin-top:10px;padding-left:10px;}
+.topurl a{color:#ff6;}
+.topurl img{}
+.www{width:200px;height:30px;background:url(www.png) no-repeat;float:left;}
+/*banner条*/

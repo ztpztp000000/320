@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><!--{$language.title}--></title>
+<LINK href="/templates/new_admin/img/main.css" type=text/css rel=stylesheet>
+<script type="text/javascript" src="/templates/new_admin/img/js/jquery.js"></script>
+<script type="text/javascript" src="/templates/new_admin/img/js/quxian.js"></script>
+<script type="text/javascript" SRC="js/swfobject.js"></script>
+</head>
+<body>
+	<div id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><h1>平台管理</h1></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<!--{$smarty.session.admin_name}--></b>,<!--{$language.welcome}-->
+				<span>|</span> <a href='?sort=start'><!--{$language.menu_main}--></a>
+                <span>|</span> <a href='?sort=start&do=log_list'><!--{$language.menu_log}--></a>
+				<span>|</span> <a href='?sort=start&do=clear_cache'><!--{$language.menu_clear}--></a>
+				<span>|</span> <a href='?do=logout'><!--{$language.menu_logout}--></a>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+                <li><a HREF="?sort=start">首页</a></li>
+					<li class="current"><a HREF="?sort=game_flat">管理平台</a></li>
+					<li><a HREF="?sort=websites">管理官网</a></li>
+					<li><a HREF="?sort=user">用户列表</a></li>	
+					<li><a HREF="?sort=pay">充值记录</a></li>
+                    <li><a HREF="?sort=graphs">图表</a></li>	
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<!-- End of Aside links -->
+		</div>
+	</div>
+	<!-- End of Header -->
+</div>
+<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>平台管理</h1>
+		</div>
+	</div>
+	<!-- End of Page title ------------------------------------------------------------------------------------------华丽丽的分割线-->
+  
+<table width="1000" cellpadding="0" cellspacing="0" align="center">
+<tr>
+<td valign="top">
+<div class='title'>
+<a href="?sort=game_flat&action=news&do=content_add&channel_id=<!--{$channel_id}-->"><!--{$language.content_add}--></a>
+&raquo;&nbsp;<!--{$channel_name}--></div>
+<!--{if $content_list}-->
+
+<table cellspacing="0" cellpadding="0" width="100%">
+	<form action="?sort=game_flat&action=news&do=content_delete" method="post" name="content_list">
+	<input type="hidden" name="channel_id" value="<!--{$smarty.request.channel_id}-->" />
+	<!--{foreach from=$content_list item=content}-->
+	<tr>
+	<td height="30" width="5%" align="center" nowrap="nowrap"><input type="checkbox" name="content_id[]" value="<!--{$content.id}-->" /></td>
+	<td width="80%">
+	<!--{if $content.category_name}-->
+		[<a href="?sort=game_flat&action=news&do=content_list&channel_id=<!--{$content.channel_id}-->&content_id=<!--{$content.id}-->&category_id=<!--{$content.category_id}-->" style="font-weight:bold;color:green"><!--{$content.category_name}--></a>]
+	<!--{/if}-->
+	<a href="?sort=game_flat&action=news&do=content_edit&channel_id=<!--{$content.channel_id}-->&content_id=<!--{$content.id}-->"><!--{$content.title}--></a>
+	<!--{if $content.thumb}-->
+		<a href="uploads/<!--{$content.thumb}-->" target="_blank"><img src="<!--{if $content.thumb_http}--><!--{$content.thumb}--><!--{else}-->uploads/<!--{$content.thumb}--><!--{/if}-->" alt="" align="absmiddle" style="width:20px;height:20px;border:1px solid #ccc;padding:1px"/></a>
+	<!--{/if}-->
+	<!--{if $content.password}-->
+	<img src="images/lock.gif" alt="<!--{$content.password}-->" align="absmiddle"/>
+	<!--{/if}-->
+	<!--{if $content.comment_count}-->
+	(<a href="?sort=game_flat&action=news&do=comment_list&content_id=<!--{$content.id}-->"><!--{$content.comment_count}--></a>)
+	<!--{/if}-->
+
+	<!--{if $content.is_best}-->
+	<b style="color:red">[<!--{$language.best}-->]</b>
+	<!--{/if}-->
+	</td>
+	<td  width="15%" align="center" nowrap="nowrap"><!--{$content.time}--></td>
+	</tr>
+	<tr><td height="1" bgcolor="#eeeeee" colspan="3"></td></tr>
+	<!--{/foreach}-->
+	<td><input type="submit" value="<!--{$language.submit}-->" class="button"/></td>
+	</form>
+
+	<tr>
+	<td height="30" width="5%" align="center"><input type="checkbox" onclick="batch('content_list',this)"  /></td>
+	<td colspan="2" width="95%">
+	<table width="100%">
+	<tr>
+	<td width="100">
+	<select onchange="batch_do('content_list',this.options[this.selectedIndex].value)">
+	<option><!--{$language.select}--></option>
+	<option value="best_yes"><!--{$language.selected_batch_best_yes}--></option>
+	<option value="best_no"><!--{$language.selected_batch_best_no}--></option>
+	<option value="delete"><!--{$language.selected_delete_content}--></option>
+	</select>
+
+	</td>
+	<td width="300">
+	<form method="get" name="content_search" onsubmit="if(this.elements['keyword'].value==''){this.elements['keyword'].focus();return false;}">
+
+<input type="hidden" name="action" value="content"/>
+<input type="hidden" name="do" value="content_list"/>
+<input type="hidden" name="channel_id" value="<!--{$smarty.request.channel_id}-->"/>
+<!--{if $smarty.request.category_id}-->
+<input type="hidden" name="category_id" value="<!--{$smarty.request.category_id}-->"/>
+<!--{/if}-->
+<input type="text" name="keyword" class="input"/>
+<input type="submit" value="<!--{$language.search}-->" style="padding:2px 5px"/>
+</form>
+	
+	</td>
+	<td align="right"><!--{$pagebar}--></td>
+	</tr></table>
+	</td>
+	</tr>
+</table>
+<!--{else}-->
+<div style="line-height:50px;text-align:center;"><!--{$language.nodata}--></div>
+<!--{/if}-->
+</td>
+</tr>
+</table>
+</body>
+</html>

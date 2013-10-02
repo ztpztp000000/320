@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div id="Tab1">
+  <form id="login_form" name="login_form" method="post" action="login.php?action=login">
+  <DIV class=login_b>
+  <H3 class=hid></H3>
+  <DIV class="i clearfix">
+    <font color="#000000">用户名</font>
+     <input id="member_username" name="member_username" type="text"/>
+  </DIV>
+  <DIV class="i clearfix">
+    <font color="#000000" class="fontc">密<font color="#ffffff">一</font>码</font>
+      <input id="member_password" name="member_password" type="password" />
+  </DIV>
+  <DIV class=b>
+	<input id="login_submit" type="submit" value="" class="hid cur" />
+	<input name="post_mode" type="hidden" value="withtml5">
+        <P>
+      <input id="keeplive" type="checkbox" value="" checked="checked">
+      <LABEL for=keeplive><font color="#000000">记住登录帐号</font></LABEL>
+
+  </DIV>
+  <DIV class=b2><A class=hid href="/reg.php"></A></DIV>
+  </DIV>
+  </form>
+</div>
+<script type="text/javascript">
+	var logins=function(){
+		var member_username=$('#member_username').val();
+		var member_password=$('#member_password').val();
+		if ($.trim(member_username)==''){
+			alert('<?php echo $this->_var['language']['username_is_empty']; ?>');
+			return false;
+		}
+		if ($.trim(member_password)==''){
+			alert('<?php echo $this->_var['language']['password_is_empty']; ?>');
+			return false;
+		}
+		if (member_password.length<6&&member_password.length>20){
+			alert('<?php echo $this->_var['language']['member_password_text']; ?>');
+			return false;
+		}
+		return true;
+	};
+	$("#login_form").submit(function(){
+		return logins();
+	});
+</script>
+<div id="Tab2" style="display:none;">
+<div class="login_a">
+    <div class="hid"><div class="hr30"></div></div>
+    <div class="info">
+        <dl>
+            <dd id="login_name" class="u_name">尊敬的<?php 
+$k = array (
+  'name' => 'get_login_name',
+);
+echo $this->_hash . $k['name'] . '|' . serialize($k) . $this->_hash;
+?>欢迎回来！<p><strong id="curMoney"></strong></p></dd>
+            
+            <div class="avata"> </div>
+</dl>
+   
+    <div class="b2">
+<div class="dlfont">
+	<ul>
+        <li><a title="游戏中心" href="/game.php">游戏中心</a></li>
+		<li><a title="推广" href="/user.php?action=sp" style="color:#F00;">推广与提现</a></li>
+        <li><a title="用户中心" href="/user.php">用户中心</a></li>
+         <li><a title="立即充值" href="/pay0.php">立即充值</a></li>
+         <li><a title="礼包领取" href="/card.php">礼包领取</a></li>
+         <li><a title="安全退出" href="/user.php?action=logout">安全退出</a></li></ul>
+ </div>
+    </div>        
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+var login_state=<?php 
+$k = array (
+  'name' => 'get_login_state',
+);
+echo $this->_hash . $k['name'] . '|' . serialize($k) . $this->_hash;
+?>;
+var curMoney=<?php 
+$k = array (
+  'name' => 'get_cur_money',
+);
+echo $this->_hash . $k['name'] . '|' . serialize($k) . $this->_hash;
+?>;
+$("#curMoney").html("您拥有平台币："+curMoney);
+if(login_state){
+	$("#Tab1").hide();
+	$("#Tab2").show();
+}
+</script>

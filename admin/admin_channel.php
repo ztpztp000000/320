@@ -1,0 +1,256 @@
+<?php
+//频道列表
+if($do==''){
+	check_permissions('channel_read');
+	$channel_list=array();
+	$res=$GLOBALS['db']->getall("SELECT * FROM ".$db_prefix."content_channel order by channel_id asc");
+	if($res){
+		foreach($res as $row){
+			$channel_list[$row['channel_id']]['id']=$row['channel_id'];
+			$channel_list[$row['channel_id']]['name']=$row['channel_name'];
+			$channel_list[$row['channel_id']]['description']=$row['channel_description'];
+		}
+	}
+	$smarty=new smarty();smarty_header();
+	$smarty->assign('channel_list',$channel_list);
+	$smarty->display('channel_list.htm');
+}
+//频道添加
+if($do=='channel_add'){
+	check_permissions('channel_write');
+	$channel=array();
+	$channel['id']=0;
+	$channel['name']='';
+	$channel['description']='';
+	$channel['banner']='';
+	$channel['index']=0;
+	$channel['index_truncate']=10;
+	$channel['index_size']=10;
+	$channel['index_style']=1;
+	$channel['list_truncate']=10;
+	$channel['list_size']=10;
+	$channel['list_style']=1;
+	$channel['content_style']=1;
+	$channel['read_permissions']=-1;
+	$channel['write_permissions']=-2;
+	$channel['comment_permissions']=0;
+	$channel['sort']=0;
+	$channel['upload_ext']='jpg,png,gif,bmp,zip,rar,tar,7z,torrent,mp3,wma,swf,doc,docx,xls,xlsx,ppt,pptx,mdb,mdbx';
+	$channel['cache']=1;
+	$channel['state']=1;
+	$channel['menu']=0;
+	$smarty=new smarty();smarty_header();
+	$smarty->assign('channel',$channel);
+	$smarty->assign('member_group',get_group_list());
+	$smarty->assign('mode','insert');
+	$smarty->display('channel_info.htm');
+}
+//频道插入
+if($do=='channel_insert'){
+	check_permissions('channel_write');
+	$channel_name=empty($_POST['channel_name'])?'':addslashes(trim($_POST['channel_name']));
+	$channel_description=empty($_POST['channel_description'])?'':addslashes(trim($_POST['channel_description']));
+	$channel_banner=upload($_FILES['channel_banner']);
+	$channel_index=empty($_POST['channel_index'])?0:intval($_POST['channel_index']);
+	$channel_index_truncate=empty($_POST['channel_index_truncate'])?0:intval($_POST['channel_index_truncate']);
+	$channel_index_size=empty($_POST['channel_index_size'])?0:intval($_POST['channel_index_size']);
+	$channel_index_style=empty($_POST['channel_index_style'])?0:intval($_POST['channel_index_style']);
+	$channel_list_truncate=empty($_POST['channel_list_truncate'])?0:intval($_POST['channel_list_truncate']);
+	$channel_list_size=empty($_POST['channel_list_size'])?0:intval($_POST['channel_list_size']);
+	$channel_list_style=empty($_POST['channel_list_style'])?0:intval($_POST['channel_list_style']);
+	$channel_content_style=empty($_POST['channel_content_style'])?0:intval($_POST['channel_content_style']);
+	$channel_sort=empty($_POST['channel_sort'])?0:intval($_POST['channel_sort']);
+	$channel_read_permissions=empty($_POST['channel_read_permissions'])?0:intval($_POST['channel_read_permissions']);
+	$channel_write_permissions=empty($_POST['channel_write_permissions'])?0:intval($_POST['channel_write_permissions']);
+	$channel_comment_permissions=empty($_POST['channel_comment_permissions'])?0:intval($_POST['channel_comment_permissions']);
+	$channel_upload_ext=empty($_POST['channel_upload_ext'])?'':addslashes(trim($_POST['channel_upload_ext']));
+	$channel_cache=empty($_POST['channel_cache'])?0:intval($_POST['channel_cache']);
+	$channel_state=empty($_POST['channel_state'])?0:intval($_POST['channel_state']);
+	$channel_menu=empty($_POST['channel_menu'])?0:intval($_POST['channel_menu']);
+	
+	if (empty($channel_name))
+	{
+		message(array('text'=>'请输入频道名称','link'=>''));
+	}
+	
+	$insert=array();
+	$insert['channel_name']=$channel_name;
+	$insert['channel_description']=$channel_description;
+	$insert['channel_banner']=$channel_banner;
+	$insert['channel_index']=$channel_index;
+	$insert['channel_index_truncate']=$channel_index_truncate;
+	$insert['channel_index_size']=$channel_index_size;
+	$insert['channel_index_style']=$channel_index_style;
+	$insert['channel_list_truncate']=$channel_list_truncate;
+	$insert['channel_list_size']=$channel_list_size;
+	$insert['channel_list_style']=$channel_list_style;
+	$insert['channel_content_style']=$channel_content_style;
+	$insert['channel_sort']=$channel_sort;
+	$insert['channel_read_permissions']=$channel_read_permissions;
+	$insert['channel_write_permissions']=$channel_write_permissions;
+	$insert['channel_comment_permissions']=$channel_comment_permissions;
+	$insert['channel_upload_ext']=$channel_upload_ext;
+	$insert['channel_cache']=$channel_cache;
+	$insert['channel_state']=$channel_state;
+	$db->insert($db_prefix."content_channel",$insert);
+	$channel_id=$db->insert_id();
+	admin_log('insert','channel',$channel_name);
+	if($channel_menu==1){
+		$insert=array();
+		$insert['menu_name']=$channel_name;
+		if($GLOBALS['config']['rewrite_state']=='no'){
+			$insert['menu_link']='channel.php?id='.$channel_id;
+		}else{
+			$insert['menu_link']='channel-'.$channel_id.'.html';
+		}
+		$insert['menu_target']=0;
+		$insert['menu_mode']=0;
+		$insert['menu_sort']=$db->getcount("SELECT * FROM ".$db_prefix."menu");
+		$insert['menu_state']=1;
+		$insert['parent_id']=0;
+		$db->insert($db_prefix."menu",$insert);
+		admin_log('insert','menu',$channel_name);
+	}
+	clear_cache();
+	message(array('text'=>$language['channel_insert_is_success'],'link'=>'?sort=game_flat&action=news'));
+}
+//频道编辑
+if($do=='channel_edit'){
+	check_permissions('channel_write');
+	$channel_id=empty($_GET['channel_id'])?0:intval($_GET['channel_id']);
+	$row=$db->getone("SELECT * FROM ".$db_prefix."content_channel WHERE channel_id='$channel_id'");
+	$channel=array();
+	$channel['id']=$row['channel_id'];
+	$channel['name']=$row['channel_name'];
+	$channel['description']=$row['channel_description'];
+	$channel['banner']=$row['channel_banner'];
+	$channel['index']=$row['channel_index'];
+	$channel['index_truncate']=$row['channel_index_truncate'];
+	$channel['index_size']=$row['channel_index_size'];
+	$channel['index_style']=$row['channel_index_style'];
+	$channel['list_truncate']=$row['channel_list_truncate'];
+	$channel['list_size']=$row['channel_list_size'];
+	$channel['list_style']=$row['channel_list_style'];
+	$channel['content_style']=$row['channel_content_style'];
+	$channel['read_permissions']=$row['channel_read_permissions'];
+	$channel['write_permissions']=$row['channel_write_permissions'];
+	$channel['comment_permissions']=$row['channel_comment_permissions'];
+	$channel['sort']=$row['channel_sort'];
+	$channel['upload_ext']=$row['channel_upload_ext'];
+	$channel['cache']=$row['channel_cache'];
+	$channel['state']=$row['channel_state'];
+	$channel['menu']=0;
+	$smarty=new smarty();smarty_header();
+	$smarty->assign('channel',$channel);
+	$smarty->assign('member_group',get_group_list());
+	$smarty->assign('mode','update');
+	$smarty->display('channel_info.htm');
+}
+//频道更新
+if($do=='channel_update'){
+	check_permissions('channel_write');
+	$channel_id=empty($_POST['channel_id'])?0:intval($_POST['channel_id']);
+	$channel_name=empty($_POST['channel_name'])?'':addslashes(trim($_POST['channel_name']));
+	$channel_description=empty($_POST['channel_description'])?'':addslashes(trim($_POST['channel_description']));
+	$channel_banner=upload($_FILES['channel_banner']);
+	$channel_banner_old=empty($_POST['channel_banner_old'])?'':trim($_POST['channel_banner_old']);
+	$channel_banner_delete=empty($_POST['channel_banner_delete'])?'':trim($_POST['channel_banner_delete']);
+	$channel_index=empty($_POST['channel_index'])?0:intval($_POST['channel_index']);
+	$channel_index_truncate=empty($_POST['channel_index_truncate'])?0:intval($_POST['channel_index_truncate']);
+	$channel_index_size=empty($_POST['channel_index_size'])?0:intval($_POST['channel_index_size']);
+	$channel_index_style=empty($_POST['channel_index_style'])?0:intval($_POST['channel_index_style']);
+	$channel_list_truncate=empty($_POST['channel_list_truncate'])?0:intval($_POST['channel_list_truncate']);
+	$channel_list_size=empty($_POST['channel_list_size'])?0:intval($_POST['channel_list_size']);
+	$channel_list_style=empty($_POST['channel_list_style'])?0:intval($_POST['channel_list_style']);
+	$channel_content_style=empty($_POST['channel_content_style'])?0:intval($_POST['channel_content_style']);
+	$channel_sort=empty($_POST['channel_sort'])?0:intval($_POST['channel_sort']);
+	$channel_read_permissions=empty($_POST['channel_read_permissions'])?0:intval($_POST['channel_read_permissions']);
+	$channel_write_permissions=empty($_POST['channel_write_permissions'])?0:intval($_POST['channel_write_permissions']);
+	$channel_comment_permissions=empty($_POST['channel_comment_permissions'])?0:intval($_POST['channel_comment_permissions']);
+	$channel_upload_ext=empty($_POST['channel_upload_ext'])?'':addslashes(trim($_POST['channel_upload_ext']));
+	$channel_cache=empty($_POST['channel_cache'])?0:intval($_POST['channel_cache']);
+	$channel_state=empty($_POST['channel_state'])?0:intval($_POST['channel_state']);
+	$channel_menu=empty($_POST['channel_menu'])?0:intval($_POST['channel_menu']);
+	$update=array();
+	$update['channel_name']=$channel_name;
+	$update['channel_description']=$channel_description;
+	if(!empty($channel_banner)){
+		@unlink(ROOT_PATH.'/uploads/'.$channel_banner_old);
+		$update['channel_banner']=$channel_banner;
+	}
+	if(!empty($channel_banner_delete)){
+		@unlink(ROOT_PATH.'/uploads/'.$channel_banner_delete);
+		$update['channel_banner']='';
+	}
+	$update['channel_index']=$channel_index;
+	$update['channel_index_truncate']=$channel_index_truncate;
+	$update['channel_index_size']=$channel_index_size;
+	$update['channel_index_style']=$channel_index_style;
+	$update['channel_list_truncate']=$channel_list_truncate;
+	$update['channel_list_size']=$channel_list_size;
+	$update['channel_list_style']=$channel_list_style;
+	$update['channel_content_style']=$channel_content_style;
+	$update['channel_sort']=$channel_sort;
+	$update['channel_read_permissions']=$channel_read_permissions;
+	$update['channel_write_permissions']=$channel_write_permissions;
+	$update['channel_comment_permissions']=$channel_comment_permissions;
+	$update['channel_upload_ext']=$channel_upload_ext;
+	$update['channel_cache']=$channel_cache;
+	$update['channel_state']=$channel_state;
+	$db->update($db_prefix."content_channel",$update,"channel_id=$channel_id");
+	admin_log('update','channel',$channel_name);
+	if($channel_menu==1){
+		$insert=array();
+		$insert['menu_name']=$channel_name;
+		if($GLOBALS['config']['rewrite_state']=='no'){
+			$insert['menu_link']='channel.php?id='.$channel_id;
+		}else{
+			$insert['menu_link']='channel-'.$channel_id.'.html';
+		}
+		$insert['menu_target']=0;
+		$insert['menu_mode']=0;
+		$insert['menu_sort']=$db->getcount("SELECT * FROM ".$db_prefix."menu");
+		$insert['menu_state']=1;
+		$insert['parent_id']=0;
+		$db->insert($db_prefix."menu",$insert);
+		admin_log('insert','menu',$channel_name);
+	}
+	clear_cache();
+	message(array('text'=>$language['channel_update_is_success'],'link'=>'?sort=game_flat&action=news&action=news'));
+}
+//频道删除
+if($do=='channel_delete'){
+	check_permissions('channel_delete');
+	$channel_id=empty($_GET['channel_id'])?0:intval($_GET['channel_id']);
+	$channel_name=get_channel_name($channel_id);
+	//读取内容并删除相关联的杂项
+	$res=$db->getall("SELECT content_id,content_thumb FROM ".$db_prefix."content WHERE channel_id=$channel_id");
+	foreach($res as $row){
+		if(!empty($row['content_thumb'])){
+			@unlink(ROOT_PATH.'/uploads/'.$row['content_thumb']);
+		}
+		//读取内容附件并且删除
+		$res2=$db->getall("SELECT attachment_name FROM ".$db_prefix."content_attachment WHERE content_id='".$row['content_id']."'");
+		foreach($res2 as $row2){
+			if(!empty($row2['attachment_name'])){
+				@unlink(ROOT_PATH.'/uploads/'.$row2['attachment_name']);
+			}
+		}
+		//删除内容连接
+		$db->delete($db_prefix."content_link","content_id=".$row['content_id']);
+		//删除内容附件
+		$db->delete($db_prefix."content_attachment","content_id=".$row['content_id']);
+		//删除内容评论
+		$db->delete($db_prefix."content_comment","content_id=".$row['content_id']);
+	}
+	//删除内容
+	$db->delete($db_prefix."content","channel_id=$channel_id");
+	//删除分类
+	$db->delete($db_prefix."content_category","channel_id=$channel_id");
+	//删除频道
+	$db->delete($db_prefix."content_channel","channel_id=$channel_id");
+	admin_log('delete','channel',$channel_name);
+	clear_cache();
+	message(array('text'=>$language['channel_delete_is_success'],'link'=>'?sort=game_flat&action=news&action=news'));
+}
+?>

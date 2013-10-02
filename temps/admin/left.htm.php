@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<LINK href="/templates/admin/image/admin.css" type=text/css rel=stylesheet>
+<LINK href="/templates/admin/image/reset.css" type=text/css rel=stylesheet>
+</head>
+<body>
+<dl class="left_nav">
+<dt><?php echo $this->_var['language']['menu_config']; ?></dt>
+<dd><a href='?action=config&do=config'><?php echo $this->_var['language']['menu_config_1']; ?></a></dd>
+<dd><a href='?action=config&do=menu_list'><?php echo $this->_var['language']['menu_config_2']; ?></a></dd>
+<dd><a href='?action=config&do=admin_list'><?php echo $this->_var['language']['menu_config_3']; ?></a></dd>
+<dd><a href='?action=config&do=sp_list'>推广经理</a></dd>
+
+<dt><?php echo $this->_var['language']['menu_content']; ?></dt>
+<dd><a href='?action=content&do=channel_list'><?php echo $this->_var['language']['menu_content_4']; ?></a></dd>
+<dd><a href='?action=content&do=ad_list'><?php echo $this->_var['language']['menu_content_9']; ?></a></dd>
+<dd><a href='?action=game&do=pay_list'><?php echo $this->_var['language']['menu_content_6']; ?></a></dd>
+<dd><a href='?action=game&do=card_list'><?php echo $this->_var['language']['menu_content_7']; ?></a></dd>
+<dd><a href='?action=gift&do=gift_list'><?php echo $this->_var['language']['menu_content_8']; ?></a></dd>
+
+<dt><?php echo $this->_var['language']['menu_member']; ?></dt>
+<dd><a href='?action=member&do=member_list'><?php echo $this->_var['language']['menu_member_1']; ?></a></dd>
+
+<dt>管理模板</dt>
+<dd><a href='?action=template&do=template_list'>编辑模板</a></dd>
+
+<dt><?php echo $this->_var['language']['menu_other']; ?></dt>
+<dd><a href='?action=other&do=link_list'><?php echo $this->_var['language']['menu_other_3']; ?></a></dd>
+<dd><a href='?action=game&do=sp_data'><?php echo $this->_var['language']['menu_other_4']; ?></a></dd>
+<dd><a href='?action=game&do=sp_cash'>提现申请</a></dd>
+<dt></dt>
+</dl>
+</body>
+</html>

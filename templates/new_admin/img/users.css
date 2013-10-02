@@ -1,0 +1,6 @@
+<!--用户管理-----------------------------------------------------------------------------------------华丽丽-->
+#s_manager {width:980px;margin:0 auto;}
+#s_manager li{float:left;height:30px;line-height:30px;background:#FF0;}
+#s_manager li p{padding-left:50px;}
+#s_manager li p a{color:#F00;}
+#s_manager li p a:hover{color:#0F0;}

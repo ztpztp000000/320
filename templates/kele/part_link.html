@@ -1,0 +1,17 @@
+
+<!--{if $links}-->
+<div class="box friendlink">
+    <h3>
+        <strong class="fl"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;友情链接</font></strong>
+    </h3>
+    <div class="margin">
+        <ul class="clearfix">
+            <li>
+			<!--{foreach from=$links item=link}-->
+			<a href="<!--{$link.url}-->" target="_blank" title="<!--{$link.text}-->"><font color="#000000"><!--{$link.name}--></font></a>
+			<!--{/foreach}-->
+			</li>
+        </ul>
+    </div>
+</div>
+<!--{/if}-->

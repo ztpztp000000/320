@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>官网</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<LINK href="/templates/gweb/image/reset.css" type=text/css rel=stylesheet>
+<LINK href="/templates/gweb/image/guanwang.css" type=text/css rel=stylesheet>
+<LINK href="/templates/gweb/image/server_list.css" type=text/css rel=stylesheet>
+
+<!--[if lte IE 6]>
+<script src="/templates/kele/img/fixPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.pngfix');
+</script>
+<![endif]-->
+<script type="text/javascript" src="/scripts/jquery.js"></script>
+<html>
+<body>
+<!--{include file="header.html"}-->
+<div style="background:url(<!--{$website_bk}-->) no-repeat;margin:0 auto;width:1420px;">
+<div class="mainbg">
+	<div class="g_main">
+    <h1 class="logo"><img src="/templates/gweb/image/ooxxsm.png" /></h1><div class="hr30"></div>
+		<div class="g_left"><DIV id=uc_box><!--{include file="part_login.html"}--></DIV><!--{include file="left_server_list.html"}--></div>
+        <div class="g_right">
+        	<!--{include file="part_nav.html"}-->
+            
+             <div class="in_game">
+             	<ul>
+                	<li style="width:340px;height:145px;background:url(<!--{$website_logo}-->);float:left;"></li>
+                    </ul></div>
+             <div class="xinwen">
+             	<ul>
+                <li class="xw_top"></li>
+                <li> 
+                	<div class="xw_content">
+                    <ul>
+                		<!--{foreach from=$news item=new}-->
+						<li><a title="<!--{$new.content_title}-->" href="<!--{$new.url}-->"><!--{$new.content_title}--></a> </li>
+						<!--{/foreach}-->
+                     </ul>
+                    </div>
+                </li>
+                </ul>
+             </div>
+             
+ 		<div class="hd">
+        <ul>
+        <li class="hd_top"></li>
+        <li>
+        <div class="hd_content">
+                    <ul>
+                		<!--{foreach from=$hot_action item=action}-->
+						<li><a title="<!--{$action.content_title}-->" href="<!--{$action.url}-->"><img src="/templates/gweb/image/i_new.gif" /><!--{$action.content_title}--></a> </li>
+						<!--{/foreach}-->
+                     </ul>
+                    </div>       
+        </li>
+        </ul></div>
+        <!--热门活动图-->
+        <div class="hot_content">
+        	
+            	<ul>
+            	<li><a href="<!--{$game_info.activity_url_1}-->" target="_blank"><img src="/uploads/<!--{$game_info.activity_pic_1}-->"/></a></li>
+            	<li><a href="<!--{$game_info.activity_url_2}-->" target="_blank"><img src="/uploads/<!--{$game_info.activity_pic_2}-->"/></a></li>
+            	<li><a href="<!--{$game_info.activity_url_3}-->" target="_blank"><img src="/uploads/<!--{$game_info.activity_pic_3}-->"/></a></li>
+            	<li><a href="<!--{$game_info.activity_url_4}-->" target="_blank"><img src="/uploads/<!--{$game_info.activity_pic_4}-->"/></a></li>
+            	</ul>
+        </div>
+        <!--热门活动图over-->
+        
+        <!--新手资料--><div class="new_hand"><ul>
+        	<li class="bbg"><b>游戏资料</b></li>
+        	<!--{foreach from=$game_data item=content}-->
+			<li class="margin"><a title="<!--{$content.content_title}-->" href="<!--{$content.url}-->">
+            <!--{$content.content_title}--></a></li>
+			<!--{/foreach}-->
+        </ul></div><!--新手资料over-->
+        
+        <!--游戏攻略--><div class="yxgl"><ul>
+        	<li class="bbg"><b>游戏攻略</b></li>
+            <!--{foreach from=$game_tactic item=content}-->
+			<li class="margin"><a title="<!--{$content.content_title}-->" href="<!--{$content.url}-->"><img src="/templates/gweb/image/i_new.gif" /><!--{$content.content_title}--></a> </li>
+			<!--{/foreach}-->
+        </ul></div><!--游戏攻略over-->
+        
+       <!--游戏介绍--> <div class="yxjs">
+       					<ul><li class="bbg"><b>游戏介绍</b></li>
+                        	<li class="margin"><!--{$game_info.depict}--></li></ul>
+       				</div><!--游戏介绍over-->
+        <!--玩家截图--><div class="wjxd"><ul>
+        					<li><img src="/uploads/<!--{$game_info.cature_pic_1}-->"/></li>
+                            <li><img src="/uploads/<!--{$game_info.cature_pic_2}-->"/></li>
+                            <li><img src="/uploads/<!--{$game_info.cature_pic_3}-->"/></li>
+                            <li><img src="/uploads/<!--{$game_info.cature_pic_4}-->"/></li>
+                            <li><img src="/uploads/<!--{$game_info.cature_pic_5}-->"/></li>
+                            <li><img src="/uploads/<!--{$game_info.cature_pic_6}-->"/></li>
+                      </ul></div><!--玩家截图over-->
+        <div class="yxjt"><ul>
+       	   <li class="bbg"><b>玩家心得</b></li>
+        	<!--{foreach from=$player_exp item=exp}-->
+				<li class="margin"><a title="<!--{$exp.content_title}-->" href="<!--{$exp.url}-->"><img src="/templates/gweb/image/i_new.gif" /><!--{$exp.content_title}--></a> </li>
+			<!--{/foreach}-->
+        </ul></div>
+        </div><!--right over-->
+  <table height="10"><tr><td></td></tr></table>      
+<div><!--{include file="part_link.html"}--></div>
+</div>
+</div>
+<table height="100"><tr><td></td></tr></table>
+<!--{include file="footer.html"}-->
+</div>
+</body>
+</html>
+
+

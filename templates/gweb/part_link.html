@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="css">
+.friendlink{margin:12px auto; _margin:10px auto 12px; width:980px;}
+.friendlink .margin{background:url("bg_friendlink[1].png") repeat-x 0 0; }
+.friendlink ul{margin:0; }
+.friendlink li {float:left;}
+.friendlink li a{margin:0 8px;-space:nowrap; }
+.friendlink li a:hover{#F60;}
+</style>
+
+<!--{if $link}-->
+<div class="friendlink">
+    <h3>
+        <strong><font color="#000000">友情链接</font></strong>
+    </h3></div>
+    <div class="margin">
+        <ul class="clearfix">
+            <li>
+			<!--{foreach from=$link item=link}-->
+			<a href="<!--{$link.url}-->" target="_blank" title="<!--{$link.text}-->"><font color="#000000"><!--{$link.name}--></font></a>
+			<!--{/foreach}-->
+			</li>
+        </ul>
+    </div>
+</div>
+<!--{/if}-->

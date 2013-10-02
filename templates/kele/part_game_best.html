@@ -1,0 +1,11 @@
+<!--{foreach from=$game_new item=game}-->
+<div class="h_hot_div">
+<ul>
+ <li><img class="pngfix" src="<!--{$game.logo_new}-->"></li>
+	<li><b class="server_name"><!--{$game.name}--></b>
+	<p><a title="官网" href="<!--{$game.website}-->" target="_blank">官网|</a>
+      <a title="新手卡" href="card.php?game_id=<!--{$game.id}-->" target="_blank">礼包卡|</a>
+      <a class="a3" title="进入游戏" href="game.php?action=server_list&game_id=<!--{$game.id}-->" target="_blank">进入游戏</a></li>
+</ul>
+</div>
+<!--{/foreach}-->

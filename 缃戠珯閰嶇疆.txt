@@ -1,0 +1,19 @@
+网站:
+includes\
+config.php
+修改数据库ip和用户名密码，db_reg_db是为了从游戏中点击充值，跳转到777fly时判断用户是否为1gwan的，所以要将注册的用户信息写到777fly上一份。这个是777lfy osslite数据库的名称
+config_ucenter.php
+修改对应的数据库ip和用户名密码, 及UC_API
+
+论坛：
+bbs\config\
+config_global.php
+config_ucenter.php
+修改为对应的数据库ip和用户名密码
+
+bbs\uc_server\data\config.inc.php
+修改为对应的数据库ip和用户名密码
+
+神曲
+sq\data\common.inc.php
+修改为对应的数据库ip和用户名密码

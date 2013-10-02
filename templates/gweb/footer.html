@@ -1,0 +1,21 @@
+﻿<div id=foot>
+<div class="foot_bar">
+<div class="footlogo">
+<div class="footfont">健康游戏公告：抵制不良游戏，拒绝盗版游戏。注意自我保护，预防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活</div>
+</div>
+</div>
+<div id="foot_main">
+
+	<!--{if $bottom_menu}-->
+	<P>
+	<!--{foreach item=menu from=$bottom_menu name=bottom_menu}-->
+ <a href="{$menu.link}" {if $menu.target==1}target="_blank"{/if}> <font color="#000000">{$menu.name}</font></a>
+  <!--{if !$smarty.foreach.bottom_menu.last}-->┊<!--{/if}-->
+	<!--{/foreach}-->
+  </P>
+	<!--{/if}-->  
+     <P>
+ <font color="#000000">  ┊ <!--{$config.site_icp}--></font>
+  </P>
+</div>
+</div>

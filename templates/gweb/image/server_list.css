@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+.s_top{width:100%;height:30px;line-height:30px;background:#daedff;border-bottom:2px solid #43688a;border-top:1px solid #43688a;}
+.s_top b{padding-left:20px;color:#000;}
+
+.s_list{width:100%;background:#ff0;}
+.s_list li{height:30px;line-height:30px;width:25%;float:left;}
+.s_list li b{padding-left:50px;color:#000;}
+.dashed{width:100%;height:1px;border-bottom:1px dashed #000;}
+.list_server{width:100%;}
+.list_server li{float:left;height:40px;line-height:40px;width:25%;border-bottom:1px dashed #999;}
+.list_server li b{padding-left:50px;color:#000;}
+.list_server li a{color:#000;}
+.list_server li a:hover{color:#F60;}
+
+<!--新闻公告-->
+.list_cont{width:100%;}
+.list_cont li{height:30px;line-height:30px;border-bottom:1px dashed #999;padding-left:20px;}
+
+<!--最新开服-->
+.xinfu_list_top{width:200px;height:30px;line-height:30px;border:1px solid #fff;}
+.xinfu_list{width:230px;height:300px;background:#fff;}
+.xinfu_list .top{height:30px;line-height:30px;}

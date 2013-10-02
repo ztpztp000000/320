@@ -1,0 +1,12 @@
+<!--{foreach from=$game_new item=game}-->
+
+<div class="zxkf_div fl"><img class="fl" src="uploads/<!--{$game.server_logo}-->">
+  <p class="fl"><a class="btn_green" title="进入游戏" href="game.php?action=play&server_id=<!--{$game.id}-->">进入游戏</a>
+  <a class="btn_gray" title="领取礼包" href="card.php?action=card_list&id=<!--{$game.game_id}-->">领取礼包</a></p>
+
+<div class="intro"><strong><!--{$game.server_name}--> <!--{$game.server_trunon_date}--> <!--{$game.server_trunon_hour}-->点</strong>
+<p><!--{$game.server_depict}--></p>
+</div>
+</div>
+
+<!--{/foreach}-->

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>官网</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<LINK href="/templates/gweb/image/reset.css" type=text/css rel=stylesheet>
+<LINK href="/templates/gweb/image/guanwang.css" type=text/css rel=stylesheet>
+<LINK href="/templates/gweb/image/server_list.css" type=text/css rel=stylesheet>
+
+<!--[if lte IE 6]>
+<script src="/templates/kele/img/fixPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.pngfix');
+</script>
+<![endif]-->
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<html>
+<body>
+<!--{include file="header.html"}-->
+<div style="background:url(<!--{$website_bk}-->) no-repeat;margin:0 auto;width:1420px;">
+<div class="mainbg">
+	<div class="g_main"><h1 class="logo"><img src="/templates/gweb/image/ooxxsm.png" /></h1><div class="hr30"></div>
+		<div class="g_left"><DIV id=uc_box><!--{include file="p_login.html"}--></DIV></div>
+        <div class="g_right">
+			<!--{include file="part_nav.html"}-->
+             
+             
+             <div class="s_top"><b>服务器列表</b></div>
+             <div class="s_list">
+             	<ul><li><b>服务器名称</b></li><li>开服日期</li><li>礼包卡</li><li>进入游戏</li></ul></div>
+             <div class="dashed"></div>
+<!--{foreach from=$server_list item=server}-->
+			<div class="list_server">
+            	<ul>
+                	<li><b><!--{$server.name}--></b></li>
+                    <li><!--{$server.trunon_date}-->日<!--{$server.trunon_hour}-->时</li>
+                    <li><a title="领取礼包" href="/card.php?action=card_list&id=<!--{$server.game_id}-->">领取礼包</a></li>
+                    <li><a title="进入游戏" href="/game.php?action=play&server_id=<!--{$server.id}-->" target="_blank">进入游戏</a></li>
+                </ul>
+            </div><!--{/foreach}-->

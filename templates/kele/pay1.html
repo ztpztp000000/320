@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><!--{$config.site_name}--></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="<!--{$config.site_keywords|escape:html}-->" />
+<meta name="description" content="<!--{$config.site_description|escape:html}-->" />
+<LINK href="/templates/kele/image/reset1.css" type=text/css rel=stylesheet>
+<LINK href="/templates/kele/image/czzx.css" type=text/css rel=stylesheet>
+<LINK href="/templates/kele/image/banner.css" type=text/css rel=stylesheet>
+<!--[if lte IE 6]>
+<script src="/templates/kele/img/fixPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.pngfix');
+</script>
+<![endif]--> 
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script>
+<!--
+function setTab(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+//-->
+</script><!--分页-->
+
+</head>
+<body>
+<!--{include file="header.html"}-->
+<div class="czzx_bg">
+<div id="main">
+	<img src="templates/kele/image/ooxxsm.png" />	
+   		 <!--充值top-->
+		<div class="main_top">
+    	<div class="left"></div>
+        <div class="bg"><div class="czlogo"></div></div>
+        <div class="right"></div>
+   		 </div>
+         <!--充值top over-->
+         
+         <!---页面导航-->
+        <div id="main_fontbg">
+		<ul id="navigation">
+		<li><a href="#">游戏充值</a></li>
+		<li><a href="#c3">充值记录</a></li>
+		</ul></div>	
+        <!---页面导航 over-->
+        
+<div id="container">	
+  <div class="content"><!--ox平台币充值-->
+  <a name="c1" id="c1"></a>
+  <div class="c11">
+            
+            <!--c11left-->
+            	<div class="c11_left">
+                	<div class="yindao">
+                    	<ul>
+                        	<li class="chongzhi1"></li>
+                            <li class="youxi1"></li>
+                            <li class="tianbiao"></li>
+                            <li class="wancheng"></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            <!--c11left over-->
+            
+            <!--请选择要充值的游戏-->        
+				<div class="c11_right"><!--c11right-->
+                	<div class="c111_right_top"><img src="templates/kele/image/czfs.png" /></div>
+                		<div class="c11_right_main">
+                        <!--{if $game_name =='平台币充值'}-->
+						<div class="xz_dangqian">
+						<p>
+						
+						您选择是<strong>《充值平台币》</strong>请选择您的充值方式：
+						</p>
+						</div>
+						<!--{else}-->
+						<div class="xz_dangqian">
+						<p>
+						您选择的游戏是<strong>《<!--{$game_name}-->》</strong>，请选择您的充值方式：
+						</p>
+						</div>
+						<!--{/if}-->
+                        <!--充值选项-->
+                        <div class="xz_content">
+                        <!--银联充值-->
+                        <!--{foreach from=$paymode_list item=paymode}-->
+                        	<!--{if $paymode.id!=6 || $game_name!='平台币充值'}-->
+                        	<div class="yinlian_main">
+                            	<div class="yinlian1">
+                                	<ul>
+                                    	<li class="yinlian_wenzi"><!--{$paymode.name}--></li>
+                                        <li class="yinlian_logo"><img src="<!--{$paymode.logo}-->"/></li>
+                                    </ul>
+                                </div>
+                           
+                                <div class="yinlian2">
+                                	<ul>
+                                    	<li class="yinlian_btt">
+                                        <a href="pay0.php?mode=<!--{$paymode.id}-->&mn=<!--{$paymode.name}-->&app=<!--{$game_no}-->&gid=<!--{$game_id}-->&game_name=<!--{$game_name}-->&server=<!--{$server_no}-->">
+                                        <img src="templates/kele/image/ljzc.jpg" /></a></li>
+                                        <li class="yinlian2_wenzi"><!--{$paymode.desc}--></li>
+                                    </ul>
+                                </div>
+                            </div><!--银联结束-->
+                            <!--{/if}-->
+                            <!--{/foreach}-->
+                           
+                            
+                        </div>
+                        <!--充值选项完-->
+                    </div>
+                </div><!--c11right over-->            
+</div><!--c11-->
+</div><!--content-->
+</div><!--container-->
+</div><!--main-->
+<!--{include file="footer.html"}-->
+</div><!--czzx_bg-->
+

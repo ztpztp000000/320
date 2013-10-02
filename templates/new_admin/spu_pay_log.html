@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><!--{$language.title}--></title>
+<LINK href="/templates/new_admin/img/main.css" type=text/css rel=stylesheet>
+<script type="text/javascript" SRC="/templates/new_admin/img/js/swfobject.js"></script>
+<script type="text/javascript" src="/scripts/jquery.js"></script>
+<script type="text/javascript" src="/scripts/jquery.calendar.js"></script>
+<link href="styles/calendars.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#stime").cld();
+  $("#etime").cld();
+});
+</script>
+</head>
+<body>
+<div id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><h1>平台管理</h1></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<!--{$smarty.session.admin_name}--></b>,<!--{$language.welcome}-->
+				<span>|</span> <a href='?sort=start'><!--{$language.menu_main}--></a>
+                <span>|</span> <a href='?sort=start&do=log_list'><!--{$language.menu_log}--></a>
+				<span>|</span> <a href='?sort=start&do=clear_cache'><!--{$language.menu_clear}--></a>
+				<span>|</span> <a href='?do=logout'><!--{$language.menu_logout}--></a>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<div>
+				<ul class="sf-menu">
+                <li><a HREF="?sort=start">首页</a></li>
+					<li><a HREF="?sort=pay_flat">管理平台</a></li>
+					<li><a HREF="?sort=websites">管理官网</a></li>
+					<li class="current"><a HREF="?sort=user">用户列表</a></li>	
+					<li><a HREF="?sort=pay">充值记录</a></li>
+                    <li><a HREF="?sort=graphs">图表</a></li>	
+				</ul>
+			</div>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<!-- End of Aside links -->
+		</div>
+	</div>
+	<!-- End of Header -->
+</div>
+<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>充值记录</h1>
+		</div>
+	</div>
+	<!-- End of Page title ------------------------------------------------------------------------------------------华丽丽的分割线-->
+
+<table width="1100" cellpadding="0" cellspacing="0" align="center">
+<tr>
+<td valign="top">
+<div class='title'></div>
+	<form action="?sort=pay" method="post">
+	<table width="100%" border="0" cellspacing="2" cellpadding="2" align="center">
+		<tr>	
+	    <td width="400">充值时间：
+			<input id="stime" name="stime" type="text" size="15" value="<!--{$search.stime}-->" readonly bj="cBj" />
+			-
+			<input id="etime" name="etime" type="text" size="15" value="<!--{$search.etime}-->" readonly bj="cBj" />
+		</td>
+		<td><input type="submit" name="Submit" value="提交查询" style="padding:2px 5px" /></td>
+	  </tr>
+	</table>
+	</form>
+	<table cellspacing="1" cellpadding="0" width="100%">
+	<tr class="titlebg">
+	<td width="100">充值账号</td>
+	<td width="100">目标账号</td>
+	<td width="80">到账金额</td>
+	<td width="160">充值时间</td>
+	</tr>
+	<tr><td height="1" bgcolor="#eeeeee" colspan="10"></td></tr>
+	<!--{foreach from=$pay_list item=pay}-->
+		<tr>
+		<td><!--{$pay.pay_user}--></td>
+		<td><!--{$pay.game_user}-->{if $pay.game_role!=''} (<!--{$pay.game_role}-->){/if}</td>
+		<td><!--{$pay.real_money}--></td>
+		<td><!--{$pay.time}--></td>
+		</tr>
+		<tr><td height="1" bgcolor="#eeeeee" colspan="10"></td></tr>
+		<!--{foreachelse}-->
+		<tr><td height="50" colspan="10" align="center"><!--{$language.nodata}--></td></tr>
+	<!--{/foreach}-->
+	<tr>
+	<td colspan="3" style="color:red;">&nbsp;&nbsp;合计金额：<!--{$total}--></td>
+	<td height="50" colspan="7" align="right"><!--{$pagebar}--></td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+	function getServer(id){
+		$.ajax({
+			url:'pay.php',
+			data:"action=get_server&game_id="+id,
+			type:'get',
+			dataType:'text',
+			success:function(result){
+				//alert(result);
+				$("#server_id").empty();
+				$("#server_id").append('<option value="">全部</option>');
+				$("#server_id").append(result);
+			}
+		});
+	}
+	//默认游戏
+	{if $search.game_id>0}
+		getServer(<!--{$search.game_id}-->);
+	{/if}
+</script>
+</body>
+</html>

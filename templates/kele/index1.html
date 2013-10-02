@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><!--{$config.site_name}--></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="<!--{$config.site_keywords|escape:html}-->" />
+<meta name="description" content="<!--{$config.site_description|escape:html}-->" />
+<LINK href="/templates/kele/img/reset.css" type=text/css rel=stylesheet>
+<LINK href="/templates/kele/img/common.css" type=text/css rel=stylesheet>
+<LINK href="/templates/kele/img/home.css" type=text/css rel=stylesheet>
+<!--[if lte IE 6]>
+<script src="/templates/kele/img/fixPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.pngfix');
+</script>
+<![endif]-->
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/function.js"></script>
+</head>
+<body class=bagrd>
+
+<!--{include file="header.html"}-->
+<DIV class="con clearfix">
+<div id=bgbg>
+<DIV class="h_hot_game clearfix">
+<!--{include file="part_game_best.html"}-->
+</div>
+<div>
+  <DIV class=fl id=uc_box>
+	<!--{include file="part_login.html"}-->
+</DIV>
+<DIV class=fff id=kaifu clearfix><ul><li>
+    <!--{include file="part_game_new.html"}-->
+  </li></ul></DIV>
+<DIV class=fff id=banner>
+	<!--{include file="part_game_slide.html"}-->
+</DIV></div>
+
+<DIV class="box yxtj fl">
+    <H3><STRONG class=fl><font color="#990000">火爆游戏</font></STRONG> <A class=fr title=更多 href="game.php"><font color="#000000">更多&gt;&gt;</font></A> </H3>
+    <DIV class=margin>
+    	<!--{include file="part_game_hot.html"}-->
+    </DIV> 
+    </DIV>
+
+<DIV class="col2 fr clearfix">
+    <DIV class="box latest_news">
+      <H3><STRONG class=fl><font color="#990000">游戏动态</font></STRONG> <A class=fr title=更多 href="news.php"><font color="#000000">更多&gt;&gt;</font></A> 
+	  </H3>
+      <DIV class=margin>
+        <!--{include file="part_news.html"}-->
+      </DIV>
+    </DIV>
+
+<DIV class=box >
+      <DIV class=margin>
+        <!--{include file="part_service.html"}-->
+
+      </DIV>
+
+<DIV class="box getgift">
+      <DIV class=margin><A href="card.php"><IMG src="/templates/kele/img/getgift.png"></A> </DIV>
+    </DIV>
+</DIV>
+<div>
+<DIV class="con clearfix" style="ZOOM: 1">
+<!--{include file="part_link.html"}-->
+<!--{include file="footer.html"}-->
+</div>
+</body>
+</html>
